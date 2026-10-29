@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#11112b">
+  <title>ComfortStudy | Para Mo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="desktop-blocked">
+  <div id="desktopMessage" class="desktop-message">
+    <div class="desktop-message-card">
+      <h1>ComfortStudy</h1>
+      <p>Este cantinho foi feito para abrir no celular.</p>
+      <p>Abre este link no teu telefone para ver a surpresa.</p>
+    </div>
+  </div>
+  <header class="topbar">
+    <a class="brand" href="#inicio">ComfortStudy</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">Menu</button>
+    <nav id="nav">
+      <a href="#inicio">Início</a>
+      <a href="#sobre">Sobre você</a>
+      <a href="#caixa">Surpresa</a>
+      <a href="#motivos">Alguns motivos</a>
+      <a href="#nossa-musica">Nossa música</a>
+      <a href="#video">Meu vídeo</a>
+      <a href="#jogo">Mini game</a>
+      <a href="#sempre">Leia quando precisar</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero section" id="inicio">
+      <div class="hero-copy">
+        <p class="eyebrow">Uma coisa que fiz para você</p>
+        <h1>Oi, Mo.</h1>
+        <p class="lead">Fiz esse cantinho para te lembrar de algumas coisas importantes.</p>
+        <p>Principalmente que você é uma pessoa incrível e que eu te amo. Espero que isso consiga melhorar um pouquinho o seu dia.</p>
+        <a class="button" href="#caixa">Ver a surpresa</a>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="planet">K + M</div>
+        <div class="sticker sticker-a">feito por Karine</div>
+        <div class="sticker sticker-b">para Mo</div>
+        <span class="tiny-star star-a">✦</span><span class="tiny-star star-b">✧</span>
+      </div>
+    </section>
+
+    <section class="section" id="sobre">
+      <div class="section-heading">
+        <p class="eyebrow">Sem exagero, só a verdade</p>
+        <h2>Sobre você</h2>
+      </div>
+      <div class="note-card">
+        <p>Maria Vitória, tu é linda, especial e única. Gosto do teu jeito e de quem tu é, inclusive das coisas que talvez tu mesma não perceba em ti.</p>
+        <p>Quero que tu saiba que eu te amo, me importo contigo e quero estar do teu lado. Tu é a mulher da minha vida, e isso não é algo que muda por causa do que outras pessoas falam.</p>
+        <p>Fiz esse site porque queria te lembrar disso de um jeito diferente. Espero que tu goste.</p>
+        <div class="signature">Karine</div>
+      </div>
+    </section>
+
+    <section class="section surprise-section" id="caixa">
+      <div class="section-heading">
+        <p class="eyebrow">Uma pequena surpresa</p>
+        <h2>Abre a caixa</h2>
+        <p>Clica nela. Eu prometo que tem um motivo.</p>
+      </div>
+      <button class="gift-wrap" id="giftButton" aria-label="Abrir a caixa surpresa">
+        <img class="karine-pop" src="karine_cutout.png" alt="Karine saindo de dentro da caixa">
+        <div class="gift-box"><div class="ribbon-v"></div><div class="ribbon-h"></div></div>
+        <div class="gift-lid"></div>
+        <span class="gift-hint">Clique para abrir</span>
+      </button>
+      <div class="surprise-message" id="surpriseMessage" aria-live="polite">
+        <h3>EU TE AMO.</h3>
+        <p>Pronto. Era isso que eu queria te dizer. E sim, tem bastante amor aqui dentro.</p>
+        <button class="button secondary" id="moreLove">Clica de novo</button>
+      </div>
+      <div class="love-rain" id="loveRain" aria-hidden="true"></div>
+    </section>
+
+    <section class="section" id="motivos">
+      <div class="section-heading">
+        <p class="eyebrow">Algumas coisas que admiro em você</p>
+        <h2>Motivos</h2>
+        <p>Não é uma lista completa, porque eu poderia continuar por bastante tempo.</p>
+      </div>
+      <div class="reason-grid">
+        <article class="reason"><span>01</span><p>Você é única. Não existe outra pessoa igual a você.</p></article>
+        <article class="reason"><span>02</span><p>Você é linda, mesmo quando não consegue perceber isso.</p></article>
+        <article class="reason"><span>03</span><p>Eu gosto do seu jeito e de quem você é.</p></article>
+        <article class="reason"><span>04</span><p>Você importa muito para mim.</p></article>
+        <article class="reason"><span>05</span><p>Eu quero te ver bem e te ver sorrindo.</p></article>
+        <article class="reason"><span>06</span><p>Você é a minha mulher e eu tenho muito orgulho de estar contigo.</p></article>
+        <article class="reason"><span>07</span><p>Quero cuidar de você e estar presente nos dias difíceis também.</p></article>
+        <article class="reason"><span>08</span><p>Porque é você. E é você que eu escolho.</p></article>
+      </div>
+      <button class="button" id="randomReason">Mostrar mais um motivo</button>
+      <p class="random-result" id="randomResult" aria-live="polite"></p>
+    </section>
+
+    <section class="section comfort-section">
+      <div class="section-heading">
+        <p class="eyebrow">Para os dias difíceis</p>
+        <h2>Como você está?</h2>
+        <p>Escolhe uma opção. Deixei uma mensagem para cada momento.</p>
+      </div>
+      <div class="mood-buttons">
+        <button data-mood="sad">Estou triste</button>
+        <button data-mood="angry">Estou com raiva</button>
+        <button data-mood="insecure">Estou insegura</button>
+        <button data-mood="hug">Preciso de um abraço</button>
+      </div>
+      <div class="mood-response" id="moodResponse" aria-live="polite">Escolhe uma opção. Estou aqui.</div>
+    </section>
+
+
+    <section class="section music-section" id="nossa-musica">
+      <div class="section-heading">
+        <p class="eyebrow">Um pedacinho nosso</p>
+        <h2>Nossa música</h2>
+        <p>Dá o play e deixa nossas fotos passarem.</p>
+      </div>
+      <div class="slideshow-card">
+        <div class="photo-frame">
+          <img id="memoryPhoto" src="foto-01.jpeg" alt="Lembrança de Karine e Mo">
+        </div>
+        <div class="slideshow-controls">
+          <button class="button secondary" id="prevPhoto" type="button">Anterior</button>
+          <span id="photoCounter" aria-live="polite">1 / 10</span>
+          <button class="button secondary" id="nextPhoto" type="button">Próxima</button>
+        </div>
+        <audio id="ourSong" controls preload="metadata">
+          <source src="lisboa.mp3" type="audio/mpeg">
+          Seu navegador não conseguiu abrir o áudio.
+        </audio>
+        <p class="final-phrase">eu te vivo, otara</p>
+      </div>
+    </section>
+
+    <section class="section video-section" id="video">
+      <div class="section-heading">
+        <p class="eyebrow">Feito por mim para você</p>
+        <h2>Um vídeo para a Mo</h2>
+        <p>Quando quiser, pode assistir de novo.</p>
+      </div>
+      <div class="video-card">
+        <video controls playsinline preload="metadata" poster="foto-01.jpeg">
+          <source src="video-da-karine.mp4" type="video/mp4">
+          Seu navegador não conseguiu abrir o vídeo.
+        </video>
+      </div>
+    </section>
+
+    <section class="section game-section" id="jogo">
+      <div class="section-heading">
+        <p class="eyebrow">Só de brincadeira</p>
+        <h2>Desconta o estresse</h2>
+        <p>Toca na minha personagem para marcar pontos. É só uma brincadeira, Mo.</p>
+      </div>
+      <div class="game-card">
+        <p class="game-score">Pontos: <strong id="gameScore">0</strong></p>
+        <button class="game-target" id="gameTarget" type="button" aria-label="Tocar na personagem da Karine">
+          <img src="karine_cutout.png" alt="Personagem da Karine">
+          <span>TOCA AQUI</span>
+        </button>
+        <p id="gameMessage" aria-live="polite">Pode começar quando quiser.</p>
+        <button class="button secondary" id="resetGame" type="button">Zerar pontos</button>
+      </div>
+    </section>
+
+    <section class="section forever-section" id="sempre">
+      <div class="section-heading">
+        <p class="eyebrow">Uma coisa que quero que você saiba</p>
+        <h2>É você. Sempre foi você.</h2>
+      </div>
+      <div class="promise-card">
+        <p>Mo, eu sei que ouvir histórias sobre ti que não são verdade pode machucar. Queria que tu não precisasse passar por isso.</p>
+        <p>Mas quero que tu saiba que nenhuma história vai me fazer mudar de ideia sobre ti. Eu não vou deixar que outras pessoas decidam o que eu sinto, nem esquecer quem tu é por causa do que falam.</p>
+        <p>Eu te conheço, sei quem tu é e o que tu significa para mim. Tu não precisa provar teu valor para merecer respeito, carinho e amor.</p>
+        <p>Tu sempre vai ser a minha dona, a mulher que eu amo, de quem eu me importo e que eu quero cuidar. Não importa o que inventem: isso não muda o que eu sinto. Principalmente porque é tu, Mo. E sempre vai ser tu.</p>
+        <div class="signature">Com amor, Karine.</div>
+      </div>
+      <button class="button final-button" id="finalButton">Uma última coisa</button>
+      <p class="final-note" id="finalNote"></p>
+    </section>
+  </main>
+
+  <footer>
+    ComfortStudy — um cantinho feito por Karine para Maria Vitória.
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

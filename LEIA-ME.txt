@@ -1,0 +1,15 @@
+ComfortStudy | Para Mo
+
+Inclui:
+- Site original com visual roxo e azul e caixa surpresa.
+- Área “Nossa música” com apresentação automática das fotos e áudio Lisboa.
+- Área para assistir ao vídeo enviado por Karine.
+- Mini game de toque com pontuação.
+- Fotos nomeadas foto-01.jpeg, foto-02.jpeg etc.
+
+Publicação:
+1. Extraia todos os arquivos do ZIP.
+2. Envie TODOS os arquivos para a raiz do repositório GitHub, incluindo mídia e fotos.
+3. Ative GitHub Pages em Settings > Pages > Deploy from a branch > main > /(root).
+
+Observação: a reprodução de áudio começa quando a pessoa aperta play, por exigência comum dos navegadores. Mantenha os arquivos de mídia e fotos na mesma pasta de index.html.
