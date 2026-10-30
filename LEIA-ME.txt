@@ -1,13 +1,22 @@
-SITE DE DESPEDIDA — KARINE E MAVI
+SITE INTEGRADO — KARINE E MAVI
 
-Abra index.html para visualizar.
-Para publicar no GitHub Pages, envie TODOS os arquivos desta pasta para a raiz do repositório.
+Esta versão foi montada SOBRE o site anterior, preservando:
+- Página inicial e navegação.
+- Galeria/slideshow original.
+- Música antiga Lisboa.
+- Vídeo da Karine.
+- Mini game com pontuação.
+- Caixinha interativa e frase final.
 
-Inclui as 10 fotos anteriores, 7 fotos extraídas do PDF enviado, o vídeo anterior e a nova música enviada.
-A apresentação de fotos e música começa após clicar no botão (exigência comum dos navegadores).
+Novidades integradas:
+- 7 novas imagens de lembranças (total de 17 no slideshow).
+- Nova música, com seletor para alternar entre Lisboa e a música nova.
+- Seção da carta para Mavi.
+- Campo opcional para deixar uma mensagem salva localmente.
 
-IMPORTANTE SOBRE O CANTINHO DE MENSAGENS:
-As mensagens são guardadas apenas no armazenamento local do navegador e aparelho em que forem escritas.
-Elas NÃO são enviadas automaticamente para Karine. Para receber mensagens à distância, será necessário configurar um serviço online (por exemplo, Firebase) e regras de acesso.
+IMPORTANTE:
+As mensagens ficam apenas no navegador/aparelho em que forem escritas. Não são enviadas automaticamente para Karine.
 
-Mantenha todos os arquivos de mídia junto do index.html.
+PUBLICAÇÃO:
+Envie o conteúdo desta pasta para a raiz do repositório GitHub. Os arquivos com os mesmos nomes atualizam os anteriores. Os arquivos novos precisam ser adicionados também.
+Mantenha todos os arquivos de mídia na mesma pasta de index.html.

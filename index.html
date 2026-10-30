@@ -1,54 +1,146 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#20162e">
-<title>Uma última lembrança — para Mavi</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#24143f">
+  <title>ComfortStudy — para a Mo</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="top"><a class="logo" href="#inicio">K <i>+</i> M</a><button id="menuBtn" aria-label="Abrir menu">☰</button>
-<nav id="nav"><a href="#lembrancas">Lembranças</a><a href="#carta">A carta</a><a href="#mensagem">Seu cantinho</a></nav></header>
-<main>
-<section class="hero" id="inicio">
-<div class="hero-text"><p class="eyebrow">para Mavi, com carinho</p><h1>Algumas histórias<br><em>ficam na gente.</em></h1>
-<p>Não fiz isso para mudar o que você sente. Fiz porque o que vivemos foi importante para mim, e eu queria guardar nossa história com cuidado.</p>
-<a class="btn" href="#lembrancas">Ver nossas lembranças</a></div>
-<div class="hero-photo"><img src="lembranca-01.jpg" alt="Uma lembrança de vocês"><span>um pedacinho da nossa história</span></div>
-</section>
-<section class="memories section" id="lembrancas">
-<div class="heading"><p class="eyebrow">o que foi nosso</p><h2>Nossas lembranças</h2><p>Alguns instantes que eu queria rever mais uma vez.</p></div>
-<div class="album">
-<div class="frame"><img id="slide" src="foto-01.jpeg" alt="Foto de uma lembrança de vocês"><span id="count">01 / 17</span></div>
-<div class="controls"><button class="round" id="prev" aria-label="Foto anterior">‹</button><button class="btn" id="play">Ouvir nossa música</button><button class="round" id="next" aria-label="Próxima foto">›</button></div>
-<audio id="song" src="nossa-musica.mp3" preload="metadata"></audio>
-<p class="small" id="audioStatus">A música começa quando você tocar no botão.</p>
-</div>
-</section>
-<section class="letter-section section" id="carta">
-<div class="letter">
-<p class="eyebrow">uma carta que eu precisava deixar</p><h2>Para você, Mavi.</h2>
-<p>Eu não sei muito bem como começar essa carta, porque, sinceramente, eu queria que a gente não tivesse chegado a esse momento.</p>
-<p>Quando você me disse que já não sente as coisas como antes, que não é mais a mesma coisa e que está bem ficando longe de mim, doeu. Doeu porque eu ainda sinto. Ainda te amo, ainda sinto sua falta e ainda existem tantas coisas pequenas no meu dia que me lembram você.</p>
-<p>Talvez você pense que eu não te amo tanto assim, ou que o que sinto já passou. Mas não passou. Eu queria que você ficasse. Queria que a nossa história continuasse. Não vou fingir que não tenho essa vontade, porque seria mentira.</p>
-<p>Ao mesmo tempo, se estar longe de mim está te fazendo bem, eu fico feliz por você. Mesmo que essa felicidade venha misturada com saudade e com um aperto enorme aqui dentro. Eu não quero que você fique por pena, por culpa ou porque leu uma carta triste. Quero que você esteja onde seu coração consiga ficar em paz.</p>
-<p>Obrigada pelos momentos, pelos abraços, pelas brincadeiras, pelas fotos e por tudo que foi só nosso. Não vou tratar nossa história como se não tivesse significado. Ela significou muito para mim. Você significou muito para mim.</p>
-<p>Eu ainda te amo. E, se um dia você sentir vontade de conversar, pode me procurar. Não estou colocando uma obrigação nas suas mãos nem pedindo uma promessa. Só quero que saiba que meu carinho é verdadeiro e que vou guardar você com muito amor, respeitando o caminho que escolher.</p>
-<p>Cuida de você, Mavi. De verdade. Eu queria que você ficasse, mas, acima de tudo, queria que você ficasse bem.</p>
-<div class="signature">Com amor,<br><strong>Karine</strong></div>
-</div>
-</section>
-<section class="message-section section" id="mensagem">
-<div class="heading"><p class="eyebrow">se algum dia quiser</p><h2>Seu cantinho</h2><p>Se quiser deixar algo escrito — uma lembrança, um pensamento ou só como você está se sentindo — este espaço é seu.</p></div>
-<div class="message-card">
-<label for="messageText">Uma mensagem para deixar aqui</label>
-<textarea id="messageText" rows="5" placeholder="Escreva o que estiver sentindo..."></textarea>
-<div class="message-actions"><button class="btn" id="saveMessage">Guardar neste aparelho</button><button class="ghost" id="clearMessage">Apagar</button></div>
-<p class="small" id="messageStatus">A mensagem fica salva somente neste navegador e aparelho. Ela não é enviada automaticamente para Karine.</p>
-</div>
-</section>
-<section class="closing section"><div class="closing-inner"><p class="eyebrow">com carinho, sempre</p><h2>Eu te vivo, otara.</h2><p>Obrigada por ter feito parte da minha história.</p><div class="tiny-hearts">♡ &nbsp; ♡ &nbsp; ♡</div></div></section>
-</main>
-<footer><span>K + M</span><span>uma lembrança feita com carinho</span></footer>
-<script src="script.js"></script>
-</body></html>
+  <div class="stars" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="#inicio">K <span>+</span> M</a>
+    <button class="menu-button" id="menuButton" aria-label="Abrir menu" aria-expanded="false">☰</button>
+    <nav id="nav">
+      <a href="#inicio">Início</a>
+      <a href="#lisboa">Nossa música</a>
+      <a href="#video">Meu vídeo</a>
+      <a href="#jogo">Mini game</a>
+      <a href="#carta">A carta</a><a href="#mensagem">Mensagem</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero section" id="inicio">
+      <div class="hero-copy">
+        <p class="eyebrow">um cantinho nosso</p>
+        <h1>Pra você,<br><span>Mo.</span></h1>
+        <p class="intro">Fiz esse espaço pra guardar algumas coisas nossas e deixar você explorar no seu tempo. Também deixei uma carta que precisava escrever.</p>
+        <a class="primary-button" href="#lisboa">Começar</a>
+      </div>
+      <div class="hero-card">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="initials">K<span>+</span>M</div>
+        <p>um lugar feito com carinho</p>
+      </div>
+    </section>
+
+    <section class="section music-section" id="lisboa">
+      <div class="section-heading">
+        <p class="eyebrow">nossa música</p>
+        <h2>Lisboa</h2>
+        <p>As fotos vão passando enquanto a nossa música toca.</p>
+      </div>
+      <div class="slideshow-card">
+        <div class="photo-frame">
+          <img id="slidePhoto" src="foto-01.jpeg" alt="Foto de uma lembrança especial">
+          <div class="photo-counter" id="photoCounter">01 / 10</div>
+        </div>
+        <div class="slide-controls">
+          <button class="icon-button" id="prevPhoto" aria-label="Foto anterior">←</button>
+          <button class="primary-button" id="playShow">Tocar nossa música</button>
+          <button class="icon-button" id="nextPhoto" aria-label="Próxima foto">→</button>
+        </div>
+        <div class="music-choices">
+          <button class="secondary-button music-choice active" id="chooseLisboa">Lisboa</button>
+          <button class="secondary-button music-choice" id="chooseNewSong">Nossa música nova</button>
+        </div>
+        <audio id="ourSong" src="lisboa.mp3" preload="metadata"></audio>
+        <audio id="newSong" src="nossa-musica.mp3" preload="metadata"></audio>
+        <p class="hint" id="musicHint">Escolha uma música e toque para começar. As fotos passam enquanto o áudio toca.</p>
+      </div>
+      <div class="ending-line" id="songEnding" hidden>eu te vivo, otara</div>
+    </section>
+
+
+    <section class="section farewell-letter-section" id="carta">
+      <div class="farewell-letter">
+        <p class="eyebrow">uma carta que eu precisava deixar</p>
+        <h2>Para você, Mavi.</h2>
+        <p>Eu não sei muito bem como começar essa carta, porque, sinceramente, eu queria que a gente não tivesse chegado a esse momento.</p>
+        <p>Quando você me disse que já não sente as coisas como antes, que não é mais a mesma coisa e que está bem ficando longe de mim, doeu. Doeu porque eu ainda sinto. Ainda te amo, ainda sinto sua falta e ainda existem tantas coisas pequenas no meu dia que me lembram você.</p>
+        <p>Talvez você pense que eu não te amo tanto assim, ou que o que sinto já passou. Mas não passou. Eu queria que você ficasse. Queria que a nossa história continuasse. Não vou fingir que não tenho essa vontade, porque seria mentira.</p>
+        <p>Ao mesmo tempo, se estar longe de mim está te fazendo bem, eu fico feliz por você. Mesmo que essa felicidade venha misturada com saudade e com um aperto enorme aqui dentro. Eu não quero que você fique por pena, por culpa ou porque leu uma carta triste. Quero que você esteja onde seu coração consiga ficar em paz.</p>
+        <p>Obrigada pelos momentos, pelos abraços, pelas brincadeiras, pelas fotos e por tudo que foi só nosso. Não vou tratar nossa história como se não tivesse significado. Ela significou muito para mim. Você significou muito para mim.</p>
+        <p>Eu ainda te amo. E, se um dia você sentir vontade de conversar, pode me procurar. Não estou colocando uma obrigação nas suas mãos nem pedindo uma promessa. Só quero que saiba que meu carinho é verdadeiro e que vou guardar você com muito amor, respeitando o caminho que escolher.</p>
+        <p>Cuida de você, Mavi. De verdade. Eu queria que você ficasse, mas, acima de tudo, queria que você ficasse bem.</p>
+        <div class="signature">Com amor,<br><strong>Karine</strong></div>
+      </div>
+    </section>
+
+    <section class="section video-section" id="video">
+      <div class="section-heading">
+        <p class="eyebrow">um vídeo meu</p>
+        <h2>Pra você assistir</h2>
+        <p>Quando quiser, dá o play. Você pode pausar ou assistir de novo.</p>
+      </div>
+      <div class="video-card">
+        <video controls playsinline preload="metadata" poster="foto-02.jpeg">
+          <source src="video-da-karine.mp4" type="video/mp4">
+          Seu navegador não conseguiu abrir este vídeo.
+        </video>
+      </div>
+    </section>
+
+    <section class="section game-section" id="jogo">
+      <div class="section-heading">
+        <p class="eyebrow">pausa pra rir</p>
+        <h2>Desconta o estresse na Karine</h2>
+        <p>É só uma brincadeira: toca na personagem e marca pontos. Sem levar a sério, hein.</p>
+      </div>
+      <div class="game-card">
+        <div class="score-row"><span>Pontos</span><strong id="score">0</strong></div>
+        <button id="karineTarget" class="target" aria-label="Tocar na personagem da Karine">
+          <img src="karine_cutout.png" alt="Personagem da Karine">
+          <span class="tap-pop" id="tapPop">+1</span>
+        </button>
+        <p id="gameMessage" class="game-message">Pode começar quando quiser.</p>
+        <div class="game-actions">
+          <button class="primary-button" id="startGame">Começar jogo</button>
+          <button class="secondary-button" id="resetGame">Zerar pontos</button>
+        </div>
+        <p class="hint">O jogo dura 20 segundos. Vale tocar rápido!</p>
+      </div>
+    </section>
+
+    <section class="section message-section" id="mensagem">
+      <div class="message-card">
+        <p class="eyebrow">só pra fechar</p>
+        <h2>Uma última coisinha</h2>
+        <p>Abre a caixinha. E, se quiser, também pode deixar algo escrito.</p>
+        <button class="gift-box" id="giftBox" aria-label="Abrir a caixinha">
+          <span class="gift-lid"></span><span class="gift-ribbon"></span><span class="gift-bow"></span>
+        </button>
+        
+        <div class="message-card-inline">
+          <label for="messageText">Se quiser deixar uma mensagem</label>
+          <textarea id="messageText" rows="4" placeholder="Escreva o que estiver sentindo..."></textarea>
+          <div class="message-actions">
+            <button class="primary-button" id="saveMessage">Guardar neste aparelho</button>
+            <button class="secondary-button" id="clearMessage">Apagar</button>
+          </div>
+          <p class="hint" id="messageStatus">A mensagem fica salva somente neste navegador e aparelho. Ela não é enviada automaticamente para Karine.</p>
+        </div>
+        <div class="revealed" id="revealed" hidden>
+          <img src="karine_cutout.png" alt="Karine aparecendo da caixinha">
+          <p>eu te vivo, otara</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><span>K + M</span><span>feito com carinho, guardando nossa história</span></footer>
+  <script src="script.js"></script>
+</body>
+</html>
