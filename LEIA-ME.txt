@@ -1,15 +1,13 @@
-ComfortStudy | Para Mo
+SITE DE DESPEDIDA — KARINE E MAVI
 
-Inclui:
-- Site original com visual roxo e azul e caixa surpresa.
-- Área “Nossa música” com apresentação automática das fotos e áudio Lisboa.
-- Área para assistir ao vídeo enviado por Karine.
-- Mini game de toque com pontuação.
-- Fotos nomeadas foto-01.jpeg, foto-02.jpeg etc.
+Abra index.html para visualizar.
+Para publicar no GitHub Pages, envie TODOS os arquivos desta pasta para a raiz do repositório.
 
-Publicação:
-1. Extraia todos os arquivos do ZIP.
-2. Envie TODOS os arquivos para a raiz do repositório GitHub, incluindo mídia e fotos.
-3. Ative GitHub Pages em Settings > Pages > Deploy from a branch > main > /(root).
+Inclui as 10 fotos anteriores, 7 fotos extraídas do PDF enviado, o vídeo anterior e a nova música enviada.
+A apresentação de fotos e música começa após clicar no botão (exigência comum dos navegadores).
 
-Observação: a reprodução de áudio começa quando a pessoa aperta play, por exigência comum dos navegadores. Mantenha os arquivos de mídia e fotos na mesma pasta de index.html.
+IMPORTANTE SOBRE O CANTINHO DE MENSAGENS:
+As mensagens são guardadas apenas no armazenamento local do navegador e aparelho em que forem escritas.
+Elas NÃO são enviadas automaticamente para Karine. Para receber mensagens à distância, será necessário configurar um serviço online (por exemplo, Firebase) e regras de acesso.
+
+Mantenha todos os arquivos de mídia junto do index.html.

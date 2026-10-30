@@ -1,196 +1,54 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#11112b">
-  <title>ComfortStudy | Para Mo</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#20162e">
+<title>Uma última lembrança — para Mavi</title>
+<link rel="stylesheet" href="style.css">
 </head>
-<body class="desktop-blocked">
-  <div id="desktopMessage" class="desktop-message">
-    <div class="desktop-message-card">
-      <h1>ComfortStudy</h1>
-      <p>Este cantinho foi feito para abrir no celular.</p>
-      <p>Abre este link no teu telefone para ver a surpresa.</p>
-    </div>
-  </div>
-  <header class="topbar">
-    <a class="brand" href="#inicio">ComfortStudy</a>
-    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">Menu</button>
-    <nav id="nav">
-      <a href="#inicio">Início</a>
-      <a href="#sobre">Sobre você</a>
-      <a href="#caixa">Surpresa</a>
-      <a href="#motivos">Alguns motivos</a>
-      <a href="#nossa-musica">Nossa música</a>
-      <a href="#video">Meu vídeo</a>
-      <a href="#jogo">Mini game</a>
-      <a href="#sempre">Leia quando precisar</a>
-    </nav>
-  </header>
-
-  <main>
-    <section class="hero section" id="inicio">
-      <div class="hero-copy">
-        <p class="eyebrow">Uma coisa que fiz para você</p>
-        <h1>Oi, Mo.</h1>
-        <p class="lead">Fiz esse cantinho para te lembrar de algumas coisas importantes.</p>
-        <p>Principalmente que você é uma pessoa incrível e que eu te amo. Espero que isso consiga melhorar um pouquinho o seu dia.</p>
-        <a class="button" href="#caixa">Ver a surpresa</a>
-      </div>
-      <div class="hero-art" aria-hidden="true">
-        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
-        <div class="planet">K + M</div>
-        <div class="sticker sticker-a">feito por Karine</div>
-        <div class="sticker sticker-b">para Mo</div>
-        <span class="tiny-star star-a">✦</span><span class="tiny-star star-b">✧</span>
-      </div>
-    </section>
-
-    <section class="section" id="sobre">
-      <div class="section-heading">
-        <p class="eyebrow">Sem exagero, só a verdade</p>
-        <h2>Sobre você</h2>
-      </div>
-      <div class="note-card">
-        <p>Maria Vitória, tu é linda, especial e única. Gosto do teu jeito e de quem tu é, inclusive das coisas que talvez tu mesma não perceba em ti.</p>
-        <p>Quero que tu saiba que eu te amo, me importo contigo e quero estar do teu lado. Tu é a mulher da minha vida, e isso não é algo que muda por causa do que outras pessoas falam.</p>
-        <p>Fiz esse site porque queria te lembrar disso de um jeito diferente. Espero que tu goste.</p>
-        <div class="signature">Karine</div>
-      </div>
-    </section>
-
-    <section class="section surprise-section" id="caixa">
-      <div class="section-heading">
-        <p class="eyebrow">Uma pequena surpresa</p>
-        <h2>Abre a caixa</h2>
-        <p>Clica nela. Eu prometo que tem um motivo.</p>
-      </div>
-      <button class="gift-wrap" id="giftButton" aria-label="Abrir a caixa surpresa">
-        <img class="karine-pop" src="karine_cutout.png" alt="Karine saindo de dentro da caixa">
-        <div class="gift-box"><div class="ribbon-v"></div><div class="ribbon-h"></div></div>
-        <div class="gift-lid"></div>
-        <span class="gift-hint">Clique para abrir</span>
-      </button>
-      <div class="surprise-message" id="surpriseMessage" aria-live="polite">
-        <h3>EU TE AMO.</h3>
-        <p>Pronto. Era isso que eu queria te dizer. E sim, tem bastante amor aqui dentro.</p>
-        <button class="button secondary" id="moreLove">Clica de novo</button>
-      </div>
-      <div class="love-rain" id="loveRain" aria-hidden="true"></div>
-    </section>
-
-    <section class="section" id="motivos">
-      <div class="section-heading">
-        <p class="eyebrow">Algumas coisas que admiro em você</p>
-        <h2>Motivos</h2>
-        <p>Não é uma lista completa, porque eu poderia continuar por bastante tempo.</p>
-      </div>
-      <div class="reason-grid">
-        <article class="reason"><span>01</span><p>Você é única. Não existe outra pessoa igual a você.</p></article>
-        <article class="reason"><span>02</span><p>Você é linda, mesmo quando não consegue perceber isso.</p></article>
-        <article class="reason"><span>03</span><p>Eu gosto do seu jeito e de quem você é.</p></article>
-        <article class="reason"><span>04</span><p>Você importa muito para mim.</p></article>
-        <article class="reason"><span>05</span><p>Eu quero te ver bem e te ver sorrindo.</p></article>
-        <article class="reason"><span>06</span><p>Você é a minha mulher e eu tenho muito orgulho de estar contigo.</p></article>
-        <article class="reason"><span>07</span><p>Quero cuidar de você e estar presente nos dias difíceis também.</p></article>
-        <article class="reason"><span>08</span><p>Porque é você. E é você que eu escolho.</p></article>
-      </div>
-      <button class="button" id="randomReason">Mostrar mais um motivo</button>
-      <p class="random-result" id="randomResult" aria-live="polite"></p>
-    </section>
-
-    <section class="section comfort-section">
-      <div class="section-heading">
-        <p class="eyebrow">Para os dias difíceis</p>
-        <h2>Como você está?</h2>
-        <p>Escolhe uma opção. Deixei uma mensagem para cada momento.</p>
-      </div>
-      <div class="mood-buttons">
-        <button data-mood="sad">Estou triste</button>
-        <button data-mood="angry">Estou com raiva</button>
-        <button data-mood="insecure">Estou insegura</button>
-        <button data-mood="hug">Preciso de um abraço</button>
-      </div>
-      <div class="mood-response" id="moodResponse" aria-live="polite">Escolhe uma opção. Estou aqui.</div>
-    </section>
-
-
-    <section class="section music-section" id="nossa-musica">
-      <div class="section-heading">
-        <p class="eyebrow">Um pedacinho nosso</p>
-        <h2>Nossa música</h2>
-        <p>Dá o play e deixa nossas fotos passarem.</p>
-      </div>
-      <div class="slideshow-card">
-        <div class="photo-frame">
-          <img id="memoryPhoto" src="foto-01.jpeg" alt="Lembrança de Karine e Mo">
-        </div>
-        <div class="slideshow-controls">
-          <button class="button secondary" id="prevPhoto" type="button">Anterior</button>
-          <span id="photoCounter" aria-live="polite">1 / 10</span>
-          <button class="button secondary" id="nextPhoto" type="button">Próxima</button>
-        </div>
-        <audio id="ourSong" controls preload="metadata">
-          <source src="lisboa.mp3" type="audio/mpeg">
-          Seu navegador não conseguiu abrir o áudio.
-        </audio>
-        <p class="final-phrase">eu te vivo, otara</p>
-      </div>
-    </section>
-
-    <section class="section video-section" id="video">
-      <div class="section-heading">
-        <p class="eyebrow">Feito por mim para você</p>
-        <h2>Um vídeo para a Mo</h2>
-        <p>Quando quiser, pode assistir de novo.</p>
-      </div>
-      <div class="video-card">
-        <video controls playsinline preload="metadata" poster="foto-01.jpeg">
-          <source src="video-da-karine.mp4" type="video/mp4">
-          Seu navegador não conseguiu abrir o vídeo.
-        </video>
-      </div>
-    </section>
-
-    <section class="section game-section" id="jogo">
-      <div class="section-heading">
-        <p class="eyebrow">Só de brincadeira</p>
-        <h2>Desconta o estresse</h2>
-        <p>Toca na minha personagem para marcar pontos. É só uma brincadeira, Mo.</p>
-      </div>
-      <div class="game-card">
-        <p class="game-score">Pontos: <strong id="gameScore">0</strong></p>
-        <button class="game-target" id="gameTarget" type="button" aria-label="Tocar na personagem da Karine">
-          <img src="karine_cutout.png" alt="Personagem da Karine">
-          <span>TOCA AQUI</span>
-        </button>
-        <p id="gameMessage" aria-live="polite">Pode começar quando quiser.</p>
-        <button class="button secondary" id="resetGame" type="button">Zerar pontos</button>
-      </div>
-    </section>
-
-    <section class="section forever-section" id="sempre">
-      <div class="section-heading">
-        <p class="eyebrow">Uma coisa que quero que você saiba</p>
-        <h2>É você. Sempre foi você.</h2>
-      </div>
-      <div class="promise-card">
-        <p>Mo, eu sei que ouvir histórias sobre ti que não são verdade pode machucar. Queria que tu não precisasse passar por isso.</p>
-        <p>Mas quero que tu saiba que nenhuma história vai me fazer mudar de ideia sobre ti. Eu não vou deixar que outras pessoas decidam o que eu sinto, nem esquecer quem tu é por causa do que falam.</p>
-        <p>Eu te conheço, sei quem tu é e o que tu significa para mim. Tu não precisa provar teu valor para merecer respeito, carinho e amor.</p>
-        <p>Tu sempre vai ser a minha dona, a mulher que eu amo, de quem eu me importo e que eu quero cuidar. Não importa o que inventem: isso não muda o que eu sinto. Principalmente porque é tu, Mo. E sempre vai ser tu.</p>
-        <div class="signature">Com amor, Karine.</div>
-      </div>
-      <button class="button final-button" id="finalButton">Uma última coisa</button>
-      <p class="final-note" id="finalNote"></p>
-    </section>
-  </main>
-
-  <footer>
-    ComfortStudy — um cantinho feito por Karine para Maria Vitória.
-  </footer>
-  <script src="script.js"></script>
-</body>
-</html>
+<body>
+<header class="top"><a class="logo" href="#inicio">K <i>+</i> M</a><button id="menuBtn" aria-label="Abrir menu">☰</button>
+<nav id="nav"><a href="#lembrancas">Lembranças</a><a href="#carta">A carta</a><a href="#mensagem">Seu cantinho</a></nav></header>
+<main>
+<section class="hero" id="inicio">
+<div class="hero-text"><p class="eyebrow">para Mavi, com carinho</p><h1>Algumas histórias<br><em>ficam na gente.</em></h1>
+<p>Não fiz isso para mudar o que você sente. Fiz porque o que vivemos foi importante para mim, e eu queria guardar nossa história com cuidado.</p>
+<a class="btn" href="#lembrancas">Ver nossas lembranças</a></div>
+<div class="hero-photo"><img src="lembranca-01.jpg" alt="Uma lembrança de vocês"><span>um pedacinho da nossa história</span></div>
+</section>
+<section class="memories section" id="lembrancas">
+<div class="heading"><p class="eyebrow">o que foi nosso</p><h2>Nossas lembranças</h2><p>Alguns instantes que eu queria rever mais uma vez.</p></div>
+<div class="album">
+<div class="frame"><img id="slide" src="foto-01.jpeg" alt="Foto de uma lembrança de vocês"><span id="count">01 / 17</span></div>
+<div class="controls"><button class="round" id="prev" aria-label="Foto anterior">‹</button><button class="btn" id="play">Ouvir nossa música</button><button class="round" id="next" aria-label="Próxima foto">›</button></div>
+<audio id="song" src="nossa-musica.mp3" preload="metadata"></audio>
+<p class="small" id="audioStatus">A música começa quando você tocar no botão.</p>
+</div>
+</section>
+<section class="letter-section section" id="carta">
+<div class="letter">
+<p class="eyebrow">uma carta que eu precisava deixar</p><h2>Para você, Mavi.</h2>
+<p>Eu não sei muito bem como começar essa carta, porque, sinceramente, eu queria que a gente não tivesse chegado a esse momento.</p>
+<p>Quando você me disse que já não sente as coisas como antes, que não é mais a mesma coisa e que está bem ficando longe de mim, doeu. Doeu porque eu ainda sinto. Ainda te amo, ainda sinto sua falta e ainda existem tantas coisas pequenas no meu dia que me lembram você.</p>
+<p>Talvez você pense que eu não te amo tanto assim, ou que o que sinto já passou. Mas não passou. Eu queria que você ficasse. Queria que a nossa história continuasse. Não vou fingir que não tenho essa vontade, porque seria mentira.</p>
+<p>Ao mesmo tempo, se estar longe de mim está te fazendo bem, eu fico feliz por você. Mesmo que essa felicidade venha misturada com saudade e com um aperto enorme aqui dentro. Eu não quero que você fique por pena, por culpa ou porque leu uma carta triste. Quero que você esteja onde seu coração consiga ficar em paz.</p>
+<p>Obrigada pelos momentos, pelos abraços, pelas brincadeiras, pelas fotos e por tudo que foi só nosso. Não vou tratar nossa história como se não tivesse significado. Ela significou muito para mim. Você significou muito para mim.</p>
+<p>Eu ainda te amo. E, se um dia você sentir vontade de conversar, pode me procurar. Não estou colocando uma obrigação nas suas mãos nem pedindo uma promessa. Só quero que saiba que meu carinho é verdadeiro e que vou guardar você com muito amor, respeitando o caminho que escolher.</p>
+<p>Cuida de você, Mavi. De verdade. Eu queria que você ficasse, mas, acima de tudo, queria que você ficasse bem.</p>
+<div class="signature">Com amor,<br><strong>Karine</strong></div>
+</div>
+</section>
+<section class="message-section section" id="mensagem">
+<div class="heading"><p class="eyebrow">se algum dia quiser</p><h2>Seu cantinho</h2><p>Se quiser deixar algo escrito — uma lembrança, um pensamento ou só como você está se sentindo — este espaço é seu.</p></div>
+<div class="message-card">
+<label for="messageText">Uma mensagem para deixar aqui</label>
+<textarea id="messageText" rows="5" placeholder="Escreva o que estiver sentindo..."></textarea>
+<div class="message-actions"><button class="btn" id="saveMessage">Guardar neste aparelho</button><button class="ghost" id="clearMessage">Apagar</button></div>
+<p class="small" id="messageStatus">A mensagem fica salva somente neste navegador e aparelho. Ela não é enviada automaticamente para Karine.</p>
+</div>
+</section>
+<section class="closing section"><div class="closing-inner"><p class="eyebrow">com carinho, sempre</p><h2>Eu te vivo, otara.</h2><p>Obrigada por ter feito parte da minha história.</p><div class="tiny-hearts">♡ &nbsp; ♡ &nbsp; ♡</div></div></section>
+</main>
+<footer><span>K + M</span><span>uma lembrança feita com carinho</span></footer>
+<script src="script.js"></script>
+</body></html>
