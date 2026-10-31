@@ -14,7 +14,8 @@
     <button class="menu-button" id="menuButton" aria-label="Abrir menu" aria-expanded="false">☰</button>
     <nav id="nav">
       <a href="#inicio">Início</a>
-      <a href="#lisboa">Nossa música</a>
+      <a href="#lisboa">Nossas lembranças</a>
+      <a href="#quadrinhos">Nossa HQ</a>
       <a href="#video">Meu vídeo</a>
       <a href="#jogo">Mini game</a>
       <a href="#carta">A carta</a><a href="#mensagem">Mensagem</a>
@@ -36,33 +37,90 @@
       </div>
     </section>
 
-    <section class="section music-section" id="lisboa">
-      <div class="section-heading">
-        <p class="eyebrow">nossa música</p>
-        <h2>Lisboa</h2>
-        <p>As fotos vão passando enquanto a nossa música toca.</p>
+    <section class="memory-experience" id="lisboa">
+      <div class="memory-backdrop" id="memoryBackdrop"></div>
+      <div class="memory-grain"></div>
+      <div class="memory-topline">
+        <span class="memory-mark">K <i>+</i> M</span>
+        <span class="memory-label">um pequeno arquivo de nós</span>
       </div>
-      <div class="slideshow-card">
-        <div class="photo-frame">
-          <img id="slidePhoto" src="foto-01.jpeg" alt="Foto de uma lembrança especial">
-          <div class="photo-counter" id="photoCounter">01 / 10</div>
+      <div class="memory-intro">
+        <p class="eyebrow">para lembrar com carinho</p>
+        <h2>Nossas<br><em>lembranças.</em></h2>
+        <p>Algumas fotos guardam muito mais do que um momento.<br>Guardam tudo aquilo que a gente sentiu.</p>
+        <a href="#memoryStage" class="memory-start">reviver nossas lembranças <span>↓</span></a>
+      </div>
+
+      <div class="memory-stage-wrap" id="memoryStage">
+        <div class="memory-note" id="memoryNote">tem coisas que o tempo não apaga.</div>
+        <div class="memory-stage" id="memoryStageFrame">
+          <div class="memory-photo-shadow"></div>
+          <div class="memory-photo-shell">
+            <img id="slidePhoto" src="foto-01.jpeg" alt="Uma lembrança especial de Karine e Mavi">
+            <div class="memory-photo-wash"></div>
+            <span class="photo-counter" id="photoCounter">01 / 17</span>
+            <span class="photo-date-mark">memórias • K + M</span>
+          </div>
+          <div class="memory-caption" id="memoryCaption">um daqueles momentos que eu queria guardar pra sempre.</div>
+          <span class="memory-heart" aria-hidden="true">♡</span>
         </div>
-        <div class="slide-controls">
-          <button class="icon-button" id="prevPhoto" aria-label="Foto anterior">←</button>
-          <button class="primary-button" id="playShow">Tocar nossa música</button>
-          <button class="icon-button" id="nextPhoto" aria-label="Próxima foto">→</button>
+        <div class="memory-controls">
+          <button class="memory-arrow" id="prevPhoto" aria-label="Foto anterior">←</button>
+          <div class="memory-progress"><span id="memoryProgress"></span></div>
+          <button class="memory-arrow" id="nextPhoto" aria-label="Próxima foto">→</button>
         </div>
-        <div class="music-choices">
-          <button class="secondary-button music-choice active" id="chooseLisboa">Lisboa</button>
-          <button class="secondary-button music-choice" id="chooseNewSong">Nossa música nova</button>
+        <div class="memory-player">
+          <div class="player-icon">♫</div>
+          <div class="player-copy">
+            <strong id="currentTrackName">Lisboa</strong>
+            <span>uma trilha para essas lembranças</span>
+          </div>
+          <button class="player-play" id="playShow" aria-label="Tocar ou pausar música">▶</button>
+          <div class="player-track-choices">
+            <button class="music-choice active" id="chooseLisboa">Lisboa</button>
+            <button class="music-choice" id="chooseNewSong">Nossa música nova</button>
+          </div>
         </div>
         <audio id="ourSong" src="lisboa.mp3" preload="metadata"></audio>
         <audio id="newSong" src="nossa-musica.mp3" preload="metadata"></audio>
-        <p class="hint" id="musicHint">Escolha uma música e toque para começar. As fotos passam enquanto o áudio toca.</p>
+        <p class="memory-footnote" id="musicHint">Dê o play. As fotos vão mudar devagar, como páginas de um álbum antigo.</p>
       </div>
-      <div class="ending-line" id="songEnding" hidden>eu te vivo, otara</div>
+      <div class="memory-ending" id="songEnding" hidden>
+        <span>e se eu pudesse voltar...</span>
+        <strong>escolheria viver tudo outra vez.</strong>
+        <a href="#carta">ler minha carta <b>↗</b></a>
+      </div>
     </section>
 
+
+
+    <section class="comic-section" id="quadrinhos">
+      <div class="comic-orbit"></div>
+      <div class="comic-heading">
+        <p class="eyebrow">uma história em capítulos</p>
+        <h2>Duas namoradas<br><em>e um amor maluco.</em></h2>
+        <p>Uma história de reencontros, escolhas, erros, momentos inesquecíveis e um amor que foi vivido de verdade.</p>
+        <span class="comic-stamp">KARINE × MAVI · NOSSA HISTÓRIA</span>
+      </div>
+      <div class="comic-reader">
+        <div class="comic-reader-top">
+          <div><span class="comic-kicker">HISTÓRIA EM QUADRINHOS</span><h3 id="comicChapterTitle">Capítulo 1 — O começo</h3></div>
+          <div class="comic-page-count" id="comicPageCount">01 / 07</div>
+        </div>
+        <div class="comic-panels" id="comicPanels" aria-live="polite"></div>
+        <div class="comic-controls">
+          <button class="comic-nav" id="comicPrev" type="button">← Anterior</button>
+          <div class="comic-dots" id="comicDots" aria-label="Escolher capítulo"></div>
+          <button class="comic-nav comic-next" id="comicNext" type="button">Próximo →</button>
+        </div>
+        <p class="comic-disclaimer">Os desenhos são representações poéticas; os acontecimentos e as datas seguem o que Karine contou.</p>
+      </div>
+      <div class="comic-closing">
+        <span>FIM DESTE CAPÍTULO…</span>
+        <h3>O que foi vivido<br>também faz parte de quem somos.</h3>
+        <a href="#carta">Ir para a carta de despedida ↓</a>
+      </div>
+    </section>
 
     <section class="section farewell-letter-section" id="carta">
       <div class="farewell-letter">

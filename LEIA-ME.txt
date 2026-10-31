@@ -20,3 +20,9 @@ As mensagens ficam apenas no navegador/aparelho em que forem escritas. Não são
 PUBLICAÇÃO:
 Envie o conteúdo desta pasta para a raiz do repositório GitHub. Os arquivos com os mesmos nomes atualizam os anteriores. Os arquivos novos precisam ser adicionados também.
 Mantenha todos os arquivos de mídia na mesma pasta de index.html.
+
+
+ATUALIZAÇÃO VISUAL: área de lembranças cinematográfica com fundo desfocado usando as próprias fotos, moldura de álbum, textura de filme, zoom lento, transições suaves, frases sentimentais, progresso e player musical.
+
+
+NOVA ATUALIZAÇÃO: seção interativa de história em quadrinhos 'Duas namoradas e um amor maluco', com 7 capítulos navegáveis, 3 quadros por capítulo, falas e narração baseadas no relato de Karine. A seção foi adicionada sem remover as outras partes do site.
