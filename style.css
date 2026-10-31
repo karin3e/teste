@@ -314,3 +314,55 @@
   .memory-caption{left:13px !important;right:13px !important;bottom:17px !important;font-size:.9rem !important}
   .memory-heart{right:-2px !important;top:13% !important;font-size:2.3rem !important}
 }
+
+
+/* POLAROID LIMPA — somente a fotografia e a moldura */
+.memory-counter-row{
+  width:min(100%,560px);
+  margin:0 auto 10px;
+  display:flex;
+  justify-content:flex-end;
+}
+.memory-counter-row .photo-counter{
+  position:static !important;
+  display:inline-block;
+  color:#e9dce8 !important;
+  background:transparent !important;
+  border:0 !important;
+  padding:0 !important;
+  font-size:.72rem !important;
+  letter-spacing:.16em;
+}
+#memoryStageFrame.memory-stage{
+  width:min(100%,560px);
+  padding:13px 13px 13px !important;
+  background:#f7f2eb !important;
+  border:1px solid #e6ddd2 !important;
+  border-radius:2px !important;
+  box-shadow:0 22px 55px #0007, 0 2px 5px #0003 !important;
+  transform:rotate(var(--photo-tilt,-1deg));
+}
+#memoryStageFrame .memory-photo-shell{
+  width:100%;
+  height:auto !important;
+  aspect-ratio:3 / 4;
+  overflow:hidden;
+  background:#eee8df !important;
+}
+#memoryStageFrame #slidePhoto{
+  width:100% !important;
+  height:100% !important;
+  object-fit:contain !important;
+  object-position:center !important;
+  background:#eee8df !important;
+  filter:none !important;
+}
+#memoryStageFrame .memory-photo-wash,
+#memoryStageFrame .memory-caption,
+#memoryStageFrame .memory-heart,
+#memoryStageFrame .photo-date-mark{display:none !important}
+#memoryStageFrame.memory-stage.changing{opacity:.45 !important;filter:none !important}
+@media(max-width:760px){
+  .memory-counter-row{width:min(100%,460px)}
+  #memoryStageFrame.memory-stage{width:min(100%,460px);padding:9px !important}
+}
