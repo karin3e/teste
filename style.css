@@ -366,3 +366,41 @@
   .memory-counter-row{width:min(100%,460px)}
   #memoryStageFrame.memory-stage{width:min(100%,460px);padding:9px !important}
 }
+
+/* NOVAS SURPRESAS: jogo da memória, mensagem e envelope */
+.surprises-section{position:relative;overflow:hidden}
+.surprise-grid{width:min(1120px,100%);margin:34px auto 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:start}
+.surprise-card{min-width:0;padding:25px 21px;border:1px solid #ffffff20;border-radius:22px;background:linear-gradient(145deg,#302047eF,#1d1830f2);box-shadow:0 18px 45px #10091f45;color:#f7eff8}
+.surprise-number{display:block;margin-bottom:12px;color:#d9b8dc;font-size:.68rem;letter-spacing:.17em;font-weight:800}
+.surprise-card h3{margin:0 0 9px;font:600 1.45rem/1.2 'Playfair Display',Georgia,serif;color:#fff}
+.surprise-card>p{min-height:54px;margin:0 0 18px;color:#d5c9dd;font-size:.9rem;line-height:1.6}
+.memory-game-status{display:flex;justify-content:space-between;gap:8px;margin:0 0 12px;color:#d9cce0;font-size:.76rem}
+.memory-game-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.memory-card{position:relative;aspect-ratio:3/4;padding:0;overflow:hidden;border:1px solid #d9b8dc66;border-radius:10px;background:linear-gradient(145deg,#785b91,#38264f);cursor:pointer;perspective:700px;transition:transform .2s,border-color .2s}
+.memory-card:active{transform:scale(.96)}
+.memory-card:focus-visible,.secret-envelope:focus-visible{outline:3px solid #f1c7e4;outline-offset:4px}
+.memory-card-inner{position:absolute;inset:0;display:grid;place-items:center;transition:transform .45s;transform-style:preserve-3d}
+.memory-card.flipped .memory-card-inner,.memory-card.matched .memory-card-inner{transform:rotateY(180deg)}
+.memory-card-face{position:absolute;inset:0;display:grid;place-items:center;backface-visibility:hidden}
+.memory-card-back{color:#f9eafa;font:1.8rem Georgia,serif;background:radial-gradient(circle at 50% 35%,#a982b6,#4c3764 72%)}
+.memory-card-front{transform:rotateY(180deg);background:#eee8df}
+.memory-card-front img{width:100%;height:100%;object-fit:cover;display:block}
+.memory-card.matched{border:2px solid #d7b8a2;box-shadow:0 0 0 2px #d7b8a233}
+.memory-game-feedback{min-height:42px!important;margin:13px 0 12px!important;color:#ead9ee!important;font-size:.82rem!important}
+.surprise-message-window{min-height:145px;display:grid;place-items:center;margin:20px 0;padding:22px;border:1px solid #e7cde144;border-radius:16px;background:linear-gradient(135deg,#f8e9f1,#e9d9ee);color:#49314e;text-align:center;font:italic 1.12rem/1.55 'Playfair Display',Georgia,serif}
+.surprise-message-window.reveal{animation:messageReveal .55s ease}
+@keyframes messageReveal{0%{opacity:.25;transform:translateY(8px) scale(.98)}100%{opacity:1;transform:translateY(0) scale(1)}}
+.secret-envelope{position:relative;display:block;width:min(230px,100%);height:160px;margin:24px auto 12px;padding:0;border:0;background:transparent;cursor:pointer;perspective:800px}
+.envelope-back,.envelope-front,.envelope-flap{position:absolute;inset:15px 8px 22px;border-radius:5px}
+.envelope-back{background:#ead6d5;box-shadow:0 10px 22px #10091f55}
+.envelope-letter-icon{position:absolute;z-index:1;left:50%;top:32px;transform:translateX(-50%);width:78%;height:100px;display:grid;place-items:center;background:#fff9f0;color:#78546c;font:italic 1.25rem 'Playfair Display',Georgia,serif;transition:transform .55s ease}
+.envelope-flap{z-index:3;inset:15px 8px auto;height:72px;background:#d9b8c9;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .55s ease}
+.envelope-front{z-index:2;background:#e8cbd5;clip-path:polygon(0 0,50% 54%,100% 0,100% 100%,0 100%)}
+.envelope-hint{position:absolute;left:0;right:0;bottom:-12px;color:#e2cfe5;font-size:.75rem;letter-spacing:.08em}
+.secret-envelope.open .envelope-flap{transform:rotateX(180deg);z-index:0}
+.secret-envelope.open .envelope-letter-icon{transform:translate(-50%,-43px)}
+.secret-letter{margin-top:18px;padding:20px;border-radius:12px;background:#f8f0e8;color:#51404c;text-align:left;line-height:1.7;box-shadow:0 12px 30px #10091f35;animation:messageReveal .5s ease}
+.secret-letter p{margin:0 0 12px}
+.secret-letter strong{color:#805b76;font-family:'Playfair Display',Georgia,serif}
+@media(max-width:900px){.surprise-grid{grid-template-columns:1fr 1fr}.secret-envelope-card{grid-column:1/-1}}
+@media(max-width:600px){.surprise-grid{grid-template-columns:1fr;gap:14px}.secret-envelope-card{grid-column:auto}.surprise-card{padding:22px 17px}.memory-game-grid{gap:7px}.memory-game-card>p{min-height:0}}

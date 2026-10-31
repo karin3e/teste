@@ -18,6 +18,7 @@
       <a href="#quadrinhos">Nossa HQ</a>
       <a href="#video">Meu vídeo</a>
       <a href="#jogo">Mini game</a>
+      <a href="#surpresas">Surpresas</a>
       <a href="#carta">A carta</a><a href="#mensagem">Mensagem</a>
     </nav>
   </header>
@@ -168,6 +169,53 @@
           <button class="secondary-button" id="resetGame">Zerar pontos</button>
         </div>
         <p class="hint">O jogo dura 20 segundos. Vale tocar rápido!</p>
+      </div>
+    </section>
+
+    <section class="section surprises-section" id="surpresas">
+      <div class="section-heading">
+        <p class="eyebrow">três pequenas surpresas</p>
+        <h2>Um cantinho só nosso</h2>
+        <p>Tem lembranças para encontrar, palavras para descobrir e um envelope esperando para ser aberto.</p>
+      </div>
+
+      <div class="surprise-grid">
+        <article class="surprise-card memory-game-card">
+          <span class="surprise-number">01 · JOGO</span>
+          <h3>Jogo da memória</h3>
+          <p>Encontre os pares das nossas fotografias. Vamos ver quantas tentativas você precisa?</p>
+          <div class="memory-game-status"><span id="memoryPairs">0 de 6 pares</span><span id="memoryMoves">0 tentativas</span></div>
+          <div class="memory-game-grid" id="memoryGameGrid" aria-label="Jogo da memória"></div>
+          <p class="memory-game-feedback" id="memoryGameFeedback" aria-live="polite">Toque em duas cartas para começar.</p>
+          <button class="secondary-button" id="restartMemoryGame" type="button">Embaralhar novamente</button>
+        </article>
+
+        <article class="surprise-card surprise-message-card">
+          <span class="surprise-number">02 · MENSAGEM</span>
+          <h3>Uma mensagem pra você</h3>
+          <p>Às vezes, uma frase pequena já consegue trazer um sorriso.</p>
+          <div class="surprise-message-window" id="surpriseMessageText" aria-live="polite">Toque no botão e descubra sua mensagem.</div>
+          <button class="primary-button" id="newSurpriseMessage" type="button">Revelar mensagem</button>
+        </article>
+
+        <article class="surprise-card secret-envelope-card">
+          <span class="surprise-number">03 · SEGREDO</span>
+          <h3>Um envelope secreto</h3>
+          <p>Tem uma cartinha guardada aqui. Só abre quando estiver pronta para ler.</p>
+          <button class="secret-envelope" id="secretEnvelope" type="button" aria-expanded="false" aria-controls="secretLetter">
+            <span class="envelope-back"></span><span class="envelope-letter-icon">K + M</span><span class="envelope-flap"></span><span class="envelope-front"></span>
+            <span class="envelope-hint">toque para abrir</span>
+          </button>
+          <div class="secret-letter" id="secretLetter" hidden>
+            <p>Oie, amor.</p>
+            <p>Não sei em que dia você vai ver esta atualização, mas quero que saiba que eu te amo, minha princesa.</p>
+            <p>Desde que começamos a viver isso, tudo foi muito novo e especial, e eu fiquei completamente apaixonada. Desculpa por ter falhado e por todas as coisas ruins que aconteceram. Mas meu amor por você é único e verdadeiro. Eu nunca vou desistir de você, nem te esquecer. Nada disso muda o que eu sinto. Eu quero estar aqui e vou estar aqui.</p>
+            <p>Princesa, é você quem eu amo e com quem quero me casar. Na loucura, casa comigo agora? KKKK. Eu, você e muito cuscuz com ovo!</p>
+            <p>Enfim, amor, eu não quero outra vida que não seja essa com você. Eu estou mudada e vou te mostrar isso a cada dia, cada vez mais. E olha, a gente vai se casar, viu? Vamos sim.</p>
+            <p>Desculpa por tudo, princesa. Eu me arrependo de tudo de ruim. Nunca mais quero te ver chorando… Quero esse olhar bonito pra mim… só pra mim.</p>
+            <strong>Beijos, amor. ♡<br>Karine</strong>
+          </div>
+        </article>
       </div>
     </section>
 
