@@ -57,6 +57,7 @@ function setPhoto(index){
   preload.onload=()=>{
     if(token!==photoLoadToken)return;
     photoImg.src=nextSrc;
+    photoImg.style.filter="none";
     $("photoCounter").textContent=`${String(photoIndex+1).padStart(2,"0")} / ${photos.length}`;
     $("memoryCaption").textContent=memoryLines[photoIndex];
     $("memoryNote").textContent=noteLines[Math.min(3,Math.floor(photoIndex/5))];
@@ -64,6 +65,7 @@ function setPhoto(index){
     $("memoryBackdrop").style.backgroundImage=`url("${nextSrc}")`;
     frame.style.setProperty("--photo-tilt",photoIndex%2?"1.2deg":"-1.2deg");
     requestAnimationFrame(()=>requestAnimationFrame(()=>frame.classList.remove("changing")));
+    window.setTimeout(()=>frame.classList.remove("changing"),700);
     const next=new Image();
     next.src=photos[(photoIndex+1)%photos.length];
   };
@@ -243,7 +245,7 @@ const comicChapters = [
   {
     title:"Capítulo 4 — O pedido",
     panels:[
-      {scene:"flowers",tag:"23 DE MAIO DE 2026",text:"Karine se ajoelhou, entregou um anel e pediu Maria Vitória em namoro oficialmente.",say:"Você aceita namorar comigo?"},
+      {scene:"flowers",tag:"21 DE MARÇO DE 2026",text:"Em 21 de março de 2026, Karine se ajoelhou, entregou um anel e pediu Maria Vitória em namoro oficialmente.",say:"Você aceita namorar comigo?"},
       {scene:"ring",tag:"AGORA É OFICIAL",text:"Vieram as fotos, as postagens e até uma publicação feita sem querer — que Karine precisou apagar rapidinho.",say:"EU POSTEI SEM QUERER! APAGA, APAGA!"},
       {scene:"party",tag:"VIDA A DOIS",text:"Vieram os beijos, as flores, os presentes e um São João vivido juntas. Pequenos momentos foram virando grandes lembranças.",say:"A gente tinha nosso próprio jeitinho de ser feliz."}
     ]
@@ -278,11 +280,24 @@ function renderComic(){
   const chapter=comicChapters[comicIndex];
   $("comicChapterTitle").textContent=chapter.title;
   $("comicPageCount").textContent=`${String(comicIndex+1).padStart(2,"0")} / ${String(comicChapters.length).padStart(2,"0")}`;
-  $("comicPanels").innerHTML=chapter.panels.map((panel,i)=>`
+  const comicPhotoOrder = [
+    "foto-01.jpeg","foto-02.jpeg","foto-03.jpeg","foto-04.jpeg","foto-05.jpeg","foto-06.jpeg",
+    "foto-07.jpeg","foto-08.jpeg","foto-09.jpeg","foto-10.jpeg","lembranca-01.jpg","lembranca-02.jpg",
+    "lembranca-03.jpg","lembranca-04.jpg","lembranca-05.jpg","lembranca-06.jpg","lembranca-07.jpg",
+    "foto-01.jpeg","foto-04.jpeg","foto-07.jpeg","foto-10.jpeg"
+  ];
+  $("comicPanels").innerHTML=chapter.panels.map((panel,i)=>{
+    const photo=comicPhotoOrder[comicIndex*3+i];
+    return `
     <article class="comic-panel comic-scene-${panel.scene}">
-      <div class="comic-art" aria-hidden="true"><span class="comic-spark">✦</span><span class="comic-silhouette comic-person-one"></span><span class="comic-silhouette comic-person-two"></span><span class="comic-scene-label">${panel.tag}</span></div>
+      <div class="comic-art">
+        <img class="comic-real-photo" src="${photo}" alt="Fotografia de uma lembrança de Karine e Maria Vitória" loading="lazy">
+        <span class="comic-scene-label">${panel.tag}</span>
+        <span class="comic-spark" aria-hidden="true">✦</span>
+      </div>
       <div class="comic-paper"><p>${panel.text}</p><div class="comic-speech">${panel.say}</div><span class="comic-panel-number">${String(i+1).padStart(2,"0")}</span></div>
-    </article>`).join("");
+    </article>`;
+  }).join("");
   $("comicPrev").disabled=comicIndex===0;
   $("comicNext").disabled=comicIndex===comicChapters.length-1;
   $("comicDots").innerHTML=comicChapters.map((_,i)=>`<button type="button" class="comic-dot ${i===comicIndex?"active":""}" data-chapter="${i}" aria-label="Capítulo ${i+1}"></button>`).join("");

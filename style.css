@@ -123,3 +123,16 @@
 .comic-closing h3{font:500 clamp(1.8rem,4vw,3rem)/1.15 'Playfair Display',serif;margin:13px 0 22px}
 .comic-closing a{color:#e4c8f0;text-decoration:none;border-bottom:1px solid #d8b0ed;padding-bottom:5px;font-size:.8rem}
 @media(max-width:760px){.comic-section{padding:58px 14px}.comic-panels{grid-template-columns:1fr;gap:12px}.comic-art{height:210px}.comic-paper{min-height:0}.comic-reader{padding:15px;border-radius:17px}.comic-reader-top{margin-bottom:15px}.comic-controls{gap:8px}.comic-nav{padding:9px 11px;font-size:.68rem}.comic-dots{gap:5px}.comic-dot{width:6px;height:6px}.comic-dot.active{width:17px}}
+
+/* Ajustes de legibilidade das lembranças e HQ com fotos verdadeiras */
+.memory-stage.changing{filter:none;opacity:.78;transform:scale(.995) rotate(0deg)}
+.memory-photo-shell img{filter:none!important;object-fit:contain;image-rendering:auto}
+.memory-stage:not(.changing) .memory-photo-shell img{animation:none}
+.comic-art{height:clamp(175px,23vw,260px);background:#211a2b}
+.comic-art:before{z-index:1;background:linear-gradient(0deg,#090812a8,transparent 55%),linear-gradient(130deg,#f4c9df18,transparent 55%)}
+.comic-real-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.9) contrast(1.03);transition:transform .6s ease}
+.comic-panel:hover .comic-real-photo{transform:scale(1.045)}
+.comic-silhouette{display:none!important}
+.comic-scene-label{z-index:3}
+.comic-spark{z-index:3}
+@media(max-width:760px){.comic-art{height:230px}}
