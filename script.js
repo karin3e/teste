@@ -65,7 +65,8 @@ function setPhoto(index){
     $("memoryCaption").textContent=memoryLines[photoIndex];
     $("memoryNote").textContent=noteLines[Math.min(3,Math.floor(photoIndex/5))];
     $("memoryProgress").style.width=`${((photoIndex+1)/photos.length)*100}%`;
-    $("memoryBackdrop").style.backgroundImage=`url("${nextSrc}")`;
+    const backdrop=$("memoryBackdrop");
+    if(backdrop){backdrop.style.backgroundImage="none";}
     frame.style.setProperty("--photo-tilt",photoIndex%2?"1.2deg":"-1.2deg");
     requestAnimationFrame(()=>requestAnimationFrame(()=>frame.classList.remove("changing")));
     window.setTimeout(()=>frame.classList.remove("changing"),700);
