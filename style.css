@@ -136,3 +136,19 @@
 .comic-scene-label{z-index:3}
 .comic-spark{z-index:3}
 @media(max-width:760px){.comic-art{height:230px}}
+
+.comic-final-message{max-width:650px;margin:0 auto 22px;color:#cfc1d8;font:italic 1rem/1.85 Georgia,serif}
+
+/* FIX DEFINITIVO: foto real acima do fundo desfocado */
+#memoryStageFrame{filter:none!important;opacity:1!important}
+#memoryStageFrame.changing{filter:none!important;opacity:1!important;transform:none!important}
+#memoryStageFrame .memory-photo-shell{position:relative;isolation:isolate;background:transparent!important}
+#memoryStageFrame #slidePhoto{position:absolute!important;inset:0!important;z-index:2!important;display:block!important;width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;object-fit:contain!important;opacity:1!important;visibility:visible!important;filter:none!important;transform:none!important;backface-visibility:hidden}
+#memoryStageFrame .memory-photo-wash{z-index:3;opacity:.08;background:linear-gradient(130deg,#f0cba30c,transparent 45%,#120a120c)!important;mix-blend-mode:normal!important}
+#memoryStageFrame .photo-counter,#memoryStageFrame .photo-date-mark{z-index:4}
+#memoryStageFrame .memory-caption{z-index:5}
+#memoryStageFrame .memory-heart{z-index:6}
+
+.dedication-note{max-width:650px;margin:12px auto 0;text-align:center;color:#d8bfd2;font:italic .88rem/1.6 'Playfair Display',Georgia,serif}
+.player-track-choices{flex-wrap:wrap}
+@media(max-width:760px){.player-track-choices{gap:6px}.music-choice{font-size:.65rem;padding:7px 10px}}

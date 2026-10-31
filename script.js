@@ -44,6 +44,7 @@ let slideshowTimer=null;
 let song=$("ourSong");
 const oldSong=$("ourSong");
 const newSong=$("newSong");
+const dedicationSong=$("dedicationSong");
 const photoImg=$("slidePhoto");
 let photoLoadToken=0;
 
@@ -58,6 +59,8 @@ function setPhoto(index){
     if(token!==photoLoadToken)return;
     photoImg.src=nextSrc;
     photoImg.style.filter="none";
+    photoImg.style.opacity="1";
+    photoImg.style.visibility="visible";
     $("photoCounter").textContent=`${String(photoIndex+1).padStart(2,"0")} / ${photos.length}`;
     $("memoryCaption").textContent=memoryLines[photoIndex];
     $("memoryNote").textContent=noteLines[Math.min(3,Math.floor(photoIndex/5))];
@@ -85,7 +88,7 @@ function startSlideshow(){
 }
 function syncMusicUI(){
   $("playShow").textContent=song.paused?"▶":"Ⅱ";
-  $("currentTrackName").textContent=song===newSong?"Nossa música nova":"Lisboa";
+  $("currentTrackName").textContent=song===dedicationSong?"Pra você, Mavi":song===newSong?"Nossa música nova":"Lisboa";
 }
 async function playCurrentSong(){
   try{
@@ -104,15 +107,17 @@ function chooseSong(which){
   stopSlideshow();
   song.pause();
   song.currentTime=0;
-  song=which==="new"?newSong:oldSong;
+  song=which==="dedication"?dedicationSong:which==="new"?newSong:oldSong;
   $("chooseLisboa").classList.toggle("active",song===oldSong);
   $("chooseNewSong").classList.toggle("active",song===newSong);
+  $("chooseDedication").classList.toggle("active",song===dedicationSong);
   syncMusicUI();
-  $("musicHint").textContent=song===newSong?"Nossa música nova selecionada.":"Lisboa selecionada.";
+  $("musicHint").textContent=song===dedicationSong?"Sua dedicatória está selecionada.":song===newSong?"Nossa música nova selecionada.":"Lisboa selecionada.";
   if(wasPlaying)playCurrentSong();
 }
 $("chooseLisboa").addEventListener("click",()=>chooseSong("lisboa"));
 $("chooseNewSong").addEventListener("click",()=>chooseSong("new"));
+$("chooseDedication").addEventListener("click",()=>chooseSong("dedication"));
 $("prevPhoto").addEventListener("click",()=>setPhoto(photoIndex-1));
 $("nextPhoto").addEventListener("click",()=>setPhoto(photoIndex+1));
 $("playShow").addEventListener("click",()=>{
@@ -124,7 +129,7 @@ $("playShow").addEventListener("click",()=>{
     $("musicHint").textContent="A música está pausada. Continue quando quiser.";
   }
 });
-[oldSong,newSong].forEach(track=>{
+[oldSong,newSong,dedicationSong].forEach(track=>{
   track.preload="none";
   track.addEventListener("play",()=>{if(track===song)syncMusicUI();});
   track.addEventListener("pause",()=>{if(track===song){syncMusicUI();if(track.currentTime>0)stopSlideshow();}});
@@ -239,13 +244,13 @@ const comicChapters = [
     panels:[
       {scene:"court",tag:"CAMPEONATO MUNICIPAL",text:"Karine tinha acabado de jogar bola na quadra. O dia já tinha sido cheio, mas ainda guardava uma surpresa.",say:"Tô cansada… mas esse dia ainda não acabou."},
       {scene:"night",tag:"O CONVITE",text:"Maria Vitória chamou Karine para dormir na casa da avó. Karine aceitou. A noite virou uma lembrança que nenhuma das duas esqueceria.",say:"Vem dormir aqui na casa da minha avó?"},
-      {scene:"kiss",tag:"O PRIMEIRO BEIJO",text:"21 de abril de 2026. Foi o primeiro beijo. Um daqueles momentos que mudam o jeito de olhar para alguém.",say:"Acho que a nossa história começou de verdade aqui."}
+      {scene:"kiss",tag:"O PRIMEIRO BEIJO",text:"21 de março de 2026. Foi o primeiro beijo. Um daqueles momentos que mudam o jeito de olhar para alguém.",say:"Acho que a nossa história começou de verdade aqui."}
     ]
   },
   {
     title:"Capítulo 4 — O pedido",
     panels:[
-      {scene:"flowers",tag:"21 DE MARÇO DE 2026",text:"Em 21 de março de 2026, Karine se ajoelhou, entregou um anel e pediu Maria Vitória em namoro oficialmente.",say:"Você aceita namorar comigo?"},
+      {scene:"flowers",tag:"23 DE MAIO DE 2026",text:"Em 23 de maio de 2026, Karine se ajoelhou, entregou um anel e pediu Maria Vitória em namoro oficialmente.",say:"Você aceita namorar comigo?"},
       {scene:"ring",tag:"AGORA É OFICIAL",text:"Vieram as fotos, as postagens e até uma publicação feita sem querer — que Karine precisou apagar rapidinho.",say:"EU POSTEI SEM QUERER! APAGA, APAGA!"},
       {scene:"party",tag:"VIDA A DOIS",text:"Vieram os beijos, as flores, os presentes e um São João vivido juntas. Pequenos momentos foram virando grandes lembranças.",say:"A gente tinha nosso próprio jeitinho de ser feliz."}
     ]
@@ -271,7 +276,7 @@ const comicChapters = [
     panels:[
       {scene:"memories",tag:"TANTAS COISAS VIVIDAS",text:"Entre erros e acertos, existiram fotos, abraços, beijos, flores, São João, risadas e momentos que fizeram as duas felizes.",say:"Nossa história nunca foi feita de uma coisa só."},
       {scene:"letter",tag:"SEM APAGAR A VERDADE",text:"Karine sente a dor do fim e também reconhece a parte que lhe cabe. Amar alguém não apaga as feridas, e sentir saudade não obriga ninguém a voltar.",say:"Eu queria que tivesse sido diferente. E sei que também precisava ter feito diferente."},
-      {scene:"dawn",tag:"FIM… OU SÓ UMA PAUSA?",text:"Essa história não precisa fingir que tudo foi perfeito para reconhecer que foi importante. O que aconteceu faz parte da história das duas — e cada uma merece seguir em paz.",say:"Obrigada por tudo que foi nosso. Eu te vivo, otara."}
+      {scene:"dawn",tag:"FIM… OU SÓ UMA PAUSA?",text:"Essa história não precisa fingir que tudo foi perfeito para reconhecer que foi importante. O que aconteceu faz parte da história das duas — e cada uma merece seguir em paz.",say:"A vida é curta demais para deixar o amor sempre para depois. Se ainda existe carinho e vontade dos dois lados, talvez valha uma conversa sincera — sem pressão, só com o coração aberto."}
     ]
   }
 ];

@@ -54,7 +54,6 @@
       <div class="memory-stage-wrap" id="memoryStage">
         <div class="memory-note" id="memoryNote">tem coisas que o tempo não apaga.</div>
         <div class="memory-stage" id="memoryStageFrame">
-          <div class="memory-photo-shadow"></div>
           <div class="memory-photo-shell">
             <img id="slidePhoto" src="foto-01.jpeg" alt="Uma lembrança especial de Karine e Mavi">
             <div class="memory-photo-wash"></div>
@@ -79,11 +78,14 @@
           <div class="player-track-choices">
             <button class="music-choice active" id="chooseLisboa">Lisboa</button>
             <button class="music-choice" id="chooseNewSong">Nossa música nova</button>
+            <button class="music-choice" id="chooseDedication">Pra você, Mavi</button>
           </div>
         </div>
         <audio id="ourSong" src="lisboa.mp3" preload="metadata"></audio>
-        <audio id="newSong" src="nossa-musica.mp3" preload="metadata"></audio>
+        <audio id="newSong" src="nossa-musica.mp3" preload="none"></audio>
+        <audio id="dedicationSong" src="dedicatoria-mavi.mp3" preload="none"></audio>
         <p class="memory-footnote" id="musicHint">Dê o play. As fotos vão mudar devagar, como páginas de um álbum antigo.</p>
+        <p class="dedication-note">Você me contou que Marília Mendonça já foi sua cantora favorita. Essa é a música que eu escolhi dedicar a você. ♡</p>
       </div>
       <div class="memory-ending" id="songEnding" hidden>
         <span>e se eu pudesse voltar...</span>
@@ -117,7 +119,8 @@
       </div>
       <div class="comic-closing">
         <span>FIM DESTE CAPÍTULO…</span>
-        <h3>O que foi vivido<br>também faz parte de quem somos.</h3>
+        <h3>A vida é curta demais<br>para deixar o amor sempre para depois.</h3>
+        <p class="comic-final-message">Se ainda existe carinho e vontade dos dois lados, talvez valha a pena conversar, se ouvir e tentar entender o que ainda pode existir. Não por obrigação, nem por medo de ficar só — mas porque a vida passa depressa, e às vezes o que a gente mais queria era ter tido coragem de conversar com o coração aberto.</p>
         <a href="#carta">Ir para a carta de despedida ↓</a>
       </div>
     </section>

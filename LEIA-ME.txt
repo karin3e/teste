@@ -26,3 +26,6 @@ ATUALIZAÇÃO VISUAL: área de lembranças cinematográfica com fundo desfocado 
 
 
 NOVA ATUALIZAÇÃO: seção interativa de história em quadrinhos 'Duas namoradas e um amor maluco', com 7 capítulos navegáveis, 3 quadros por capítulo, falas e narração baseadas no relato de Karine. A seção foi adicionada sem remover as outras partes do site.
+
+
+CORREÇÃO DE DATAS DA HQ: primeiro beijo em 21 de março de 2026; pedido oficial de namoro com anel de joelhos em 23 de maio de 2026. Foi acrescentada uma mensagem final reflexiva, respeitando a liberdade e a vontade das duas.
