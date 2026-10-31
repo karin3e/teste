@@ -11,103 +11,135 @@ nav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
 }));
 
 const photos = [
-  ...Array.from({length: 10}, (_, i) => `foto-${String(i + 1).padStart(2, "0")}.jpeg`),
-  ...Array.from({length: 7}, (_, i) => `lembranca-${String(i + 1).padStart(2, "0")}.jpg`)
+  ...Array.from({length:10},(_,i)=>`foto-${String(i+1).padStart(2,"0")}.jpeg`),
+  ...Array.from({length:7},(_,i)=>`lembranca-${String(i+1).padStart(2,"0")}.jpg`)
 ];
 const memoryLines = [
-  "um daqueles momentos que eu queria guardar pra sempre.",
-  "às vezes, uma foto consegue trazer um abraço de volta.",
-  "que sorte a minha ter vivido isso com você.",
-  "um pedacinho da nossa história, do jeitinho que foi.",
-  "eu lembro. dos detalhes, dos risos, de tudo.",
-  "tem lembrança que chega mansinha e aperta o coração.",
-  "foi real, foi nosso, e teve muito significado.",
-  "se saudade tivesse imagem, talvez fosse uma dessas.",
-  "obrigada por cada instante que virou memória.",
-  "algumas partes de mim sempre vão sorrir ao lembrar.",
-  "não é sobre voltar no tempo; é sobre agradecer por ter vivido.",
-  "mesmo de longe, algumas lembranças continuam perto.",
-  "um capítulo bonito que sempre vai fazer parte de mim.",
-  "eu guardo com carinho tudo aquilo que foi sincero.",
-  "talvez nem tudo tenha ficado como eu sonhei, mas foi especial.",
-  "que a vida seja gentil com você, onde quer que esteja.",
-  "você continua aqui, em cada lembrança boa."
+"um daqueles momentos que eu queria guardar pra sempre.",
+"às vezes, uma foto consegue trazer um abraço de volta.",
+"que sorte a minha ter vivido isso com você.",
+"um pedacinho da nossa história, do jeitinho que foi.",
+"eu lembro. dos detalhes, dos risos, de tudo.",
+"tem lembrança que chega mansinha e aperta o coração.",
+"foi real, foi nosso, e teve muito significado.",
+"se saudade tivesse imagem, talvez fosse uma dessas.",
+"obrigada por cada instante que virou memória.",
+"algumas partes de mim sempre vão sorrir ao lembrar.",
+"não é sobre voltar no tempo; é sobre agradecer por ter vivido.",
+"mesmo de longe, algumas lembranças continuam perto.",
+"um capítulo bonito que sempre vai fazer parte de mim.",
+"eu guardo com carinho tudo aquilo que foi sincero.",
+"talvez nem tudo tenha ficado como eu sonhei, mas foi especial.",
+"que a vida seja gentil com você, onde quer que esteja.",
+"você continua aqui, em cada lembrança boa."
 ];
-const noteLines = [
-  "tem coisas que o tempo não apaga.",
-  "um álbum de momentos que ainda moram aqui.",
-  "o que foi bonito merece ser lembrado com carinho.",
-  "17 lembranças. Uma história que existiu de verdade."
+const noteLines=[
+"tem coisas que o tempo não apaga.",
+"um álbum de momentos que ainda moram aqui.",
+"o que foi bonito merece ser lembrado com carinho.",
+"17 lembranças. Uma história que existiu de verdade."
 ];
-let photoIndex = 0;
-let slideshowTimer = null;
-let startedShow = false;
-let song = $("ourSong");
-const oldSong = $("ourSong");
-const newSong = $("newSong");
-const photoImg = $("slidePhoto");
-function selectSong(which) {
-  const wasPlaying = !song.paused;
-  song.pause();
-  song = which === "new" ? newSong : oldSong;
-  $("chooseLisboa").classList.toggle("active", which !== "new");
-  $("chooseNewSong").classList.toggle("active", which === "new");
-  $("currentTrackName").textContent = which === "new" ? "Nossa música nova" : "Lisboa";
-  $("playShow").textContent = "▶";
-  if (slideshowTimer) window.clearInterval(slideshowTimer);
-  if (wasPlaying) $("musicHint").textContent = "Música trocada. Aperte play para continuar a viagem.";
-}
-$("chooseLisboa").addEventListener("click", () => selectSong("lisboa"));
-$("chooseNewSong").addEventListener("click", () => selectSong("new"));
-function showPhoto(index) {
-  photoIndex = (index + photos.length) % photos.length;
-  const frame = $("memoryStageFrame");
+let photoIndex=0;
+let slideshowTimer=null;
+let song=$("ourSong");
+const oldSong=$("ourSong");
+const newSong=$("newSong");
+const photoImg=$("slidePhoto");
+let photoLoadToken=0;
+
+function setPhoto(index){
+  photoIndex=(index+photos.length)%photos.length;
+  const token=++photoLoadToken;
+  const frame=$("memoryStageFrame");
   frame.classList.add("changing");
-  window.setTimeout(() => {
-    photoImg.src = photos[photoIndex];
-    photoImg.onload = () => frame.classList.remove("changing");
-    photoImg.onerror = () => frame.classList.remove("changing");
-    $("photoCounter").textContent = `${String(photoIndex + 1).padStart(2, "0")} / ${photos.length}`;
-    $("memoryCaption").textContent = memoryLines[photoIndex];
-    $("memoryNote").textContent = noteLines[Math.floor(photoIndex / 5)] || noteLines[3];
-    $("memoryProgress").style.width = `${((photoIndex + 1) / photos.length) * 100}%`;
-    $("memoryBackdrop").style.backgroundImage = `url("${photos[photoIndex]}")`;
-    frame.style.setProperty("--photo-tilt", photoIndex % 2 ? "1.2deg" : "-1.2deg");
-  }, 300);
+  const nextSrc=photos[photoIndex];
+  const preload=new Image();
+  preload.onload=()=>{
+    if(token!==photoLoadToken)return;
+    photoImg.src=nextSrc;
+    $("photoCounter").textContent=`${String(photoIndex+1).padStart(2,"0")} / ${photos.length}`;
+    $("memoryCaption").textContent=memoryLines[photoIndex];
+    $("memoryNote").textContent=noteLines[Math.min(3,Math.floor(photoIndex/5))];
+    $("memoryProgress").style.width=`${((photoIndex+1)/photos.length)*100}%`;
+    $("memoryBackdrop").style.backgroundImage=`url("${nextSrc}")`;
+    frame.style.setProperty("--photo-tilt",photoIndex%2?"1.2deg":"-1.2deg");
+    requestAnimationFrame(()=>requestAnimationFrame(()=>frame.classList.remove("changing")));
+    const next=new Image();
+    next.src=photos[(photoIndex+1)%photos.length];
+  };
+  preload.onerror=()=>{
+    if(token!==photoLoadToken)return;
+    $("memoryCaption").textContent="Essa lembrança não carregou. Tente avançar novamente.";
+    frame.classList.remove("changing");
+  };
+  preload.src=nextSrc;
 }
-function startSlideshow() {
-  if (slideshowTimer) window.clearInterval(slideshowTimer);
-  slideshowTimer = window.setInterval(() => showPhoto(photoIndex + 1), 5200);
+function stopSlideshow(){
+  if(slideshowTimer){clearInterval(slideshowTimer);slideshowTimer=null;}
 }
-$("prevPhoto").addEventListener("click", () => showPhoto(photoIndex - 1));
-$("nextPhoto").addEventListener("click", () => showPhoto(photoIndex + 1));
-$("playShow").addEventListener("click", async () => {
-  if (song.paused) {
-    try {
-      await song.play();
-      $("playShow").textContent = "Ⅱ";
-      $("musicHint").textContent = "Respira, olha as fotos e deixa as lembranças passarem no seu tempo.";
-      startSlideshow();
-      startedShow = true;
-      $("songEnding").hidden = true;
-    } catch (e) {
-      $("musicHint").textContent = "Toque novamente para iniciar a música.";
-    }
-  } else {
+function startSlideshow(){
+  stopSlideshow();
+  slideshowTimer=setInterval(()=>setPhoto(photoIndex+1),6500);
+}
+function syncMusicUI(){
+  $("playShow").textContent=song.paused?"▶":"Ⅱ";
+  $("currentTrackName").textContent=song===newSong?"Nossa música nova":"Lisboa";
+}
+async function playCurrentSong(){
+  try{
+    await song.play();
+    syncMusicUI();
+    $("musicHint").textContent="Respira, olha as fotos e deixa as lembranças passarem no seu tempo.";
+    startSlideshow();
+    $("songEnding").hidden=true;
+  }catch(err){
+    $("musicHint").textContent="Não foi possível iniciar essa faixa. Toque novamente ou escolha a outra música.";
+    stopSlideshow();
+  }
+}
+function chooseSong(which){
+  const wasPlaying=!song.paused;
+  stopSlideshow();
+  song.pause();
+  song.currentTime=0;
+  song=which==="new"?newSong:oldSong;
+  $("chooseLisboa").classList.toggle("active",song===oldSong);
+  $("chooseNewSong").classList.toggle("active",song===newSong);
+  syncMusicUI();
+  $("musicHint").textContent=song===newSong?"Nossa música nova selecionada.":"Lisboa selecionada.";
+  if(wasPlaying)playCurrentSong();
+}
+$("chooseLisboa").addEventListener("click",()=>chooseSong("lisboa"));
+$("chooseNewSong").addEventListener("click",()=>chooseSong("new"));
+$("prevPhoto").addEventListener("click",()=>setPhoto(photoIndex-1));
+$("nextPhoto").addEventListener("click",()=>setPhoto(photoIndex+1));
+$("playShow").addEventListener("click",()=>{
+  if(song.paused)playCurrentSong();
+  else{
     song.pause();
-    $("playShow").textContent = "▶";
-    if (slideshowTimer) window.clearInterval(slideshowTimer);
-    $("musicHint").textContent = "A música está pausada. Você pode continuar quando quiser.";
+    stopSlideshow();
+    syncMusicUI();
+    $("musicHint").textContent="A música está pausada. Continue quando quiser.";
   }
 });
-[oldSong, newSong].forEach(track => track.addEventListener("ended", () => {
-  if (track !== song) return;
-  if (slideshowTimer) window.clearInterval(slideshowTimer);
-  $("playShow").textContent = "▶";
-  $("songEnding").hidden = false;
-  showPhoto(photos.length - 1);
-}));
-showPhoto(0);
+[oldSong,newSong].forEach(track=>{
+  track.preload="none";
+  track.addEventListener("play",()=>{if(track===song)syncMusicUI();});
+  track.addEventListener("pause",()=>{if(track===song){syncMusicUI();if(track.currentTime>0)stopSlideshow();}});
+  track.addEventListener("ended",()=>{
+    if(track!==song)return;
+    stopSlideshow();
+    syncMusicUI();
+    $("songEnding").hidden=false;
+    setPhoto(photos.length-1);
+  });
+  track.addEventListener("error",()=>{
+    if(track===song)$("musicHint").textContent="Essa música não pôde ser carregada. Confira o arquivo de áudio.";
+  });
+});
+photoImg.loading="eager";
+photoImg.decoding="async";
+setPhoto(0);
 
 let score = 0;
 let gameActive = false;
