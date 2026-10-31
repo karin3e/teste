@@ -120,7 +120,6 @@ $("playShow").addEventListener("click",()=>{
 photoImg.loading="eager";
 photoImg.decoding="async";
 setPhoto(0);
-
 let score = 0;
 let gameActive = false;
 let gameInterval = null;
@@ -192,6 +191,8 @@ $("giftBox").addEventListener("click", () => {
   $("revealed").hidden = false;
   $("giftBox").setAttribute("aria-expanded", "true");
 });
+
+
 // História em quadrinhos: capítulos narrados a partir do relato da Karine.
 const comicChapters = [
   {
@@ -282,3 +283,91 @@ function renderComic(){
 $("comicPrev").addEventListener("click",()=>{if(comicIndex>0){comicIndex--;renderComic()}});
 $("comicNext").addEventListener("click",()=>{if(comicIndex<comicChapters.length-1){comicIndex++;renderComic()}});
 renderComic();
+
+
+// Jogo da memória com seis pares das fotografias do site.
+const memoryGameGrid=$('memoryGameGrid');
+if(memoryGameGrid){
+  const memoryGamePhotos=['foto-01.jpeg','foto-02.jpeg','foto-03.jpeg','foto-04.jpeg','foto-05.jpeg','foto-06.jpeg'];
+  let memoryDeck=[],memoryFirst=null,memoryLock=false,memoryFound=0,memoryAttempts=0;
+  function updateMemoryStatus(){
+    $('memoryPairs').textContent=`${memoryFound} de ${memoryGamePhotos.length} pares`;
+    $('memoryMoves').textContent=`${memoryAttempts} ${memoryAttempts===1?'tentativa':'tentativas'}`;
+  }
+  function buildMemoryGame(){
+    memoryDeck=memoryGamePhotos.flatMap((src,index)=>[{id:index,src},{id:index,src}]);
+    for(let i=memoryDeck.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[memoryDeck[i],memoryDeck[j]]=[memoryDeck[j],memoryDeck[i]];}
+    memoryFirst=null;memoryLock=false;memoryFound=0;memoryAttempts=0;
+    memoryGameGrid.innerHTML=memoryDeck.map((card,index)=>`
+      <button class="memory-card" type="button" data-index="${index}" aria-label="Carta fechada">
+        <span class="memory-card-inner">
+          <span class="memory-card-face memory-card-back" aria-hidden="true">♡</span>
+          <span class="memory-card-face memory-card-front"><img src="${card.src}" alt="Lembrança do casal"></span>
+        </span>
+      </button>`).join('');
+    memoryGameGrid.querySelectorAll('.memory-card').forEach(button=>button.addEventListener('click',()=>flipMemoryCard(button)));
+    $('memoryGameFeedback').textContent='Toque em duas cartas para encontrar um par.';
+    updateMemoryStatus();
+  }
+  function flipMemoryCard(button){
+    if(memoryLock||button.classList.contains('flipped')||button.classList.contains('matched'))return;
+    const index=Number(button.dataset.index),card=memoryDeck[index];
+    button.classList.add('flipped');button.setAttribute('aria-label','Carta revelada');
+    if(!memoryFirst){memoryFirst={button,card};return;}
+    memoryAttempts++;
+    const first=memoryFirst;
+    memoryFirst=null;
+    if(first.card.id===card.id){
+      first.button.classList.add('matched');button.classList.add('matched');
+      first.button.disabled=true;button.disabled=true;memoryFound++;
+      $('memoryGameFeedback').textContent=memoryFound===memoryGamePhotos.length?'Você encontrou todos os pares! Cada foto guarda um pedacinho da história. ♡':'Um par encontrado! Continue assim.';
+      updateMemoryStatus();
+    }else{
+      memoryLock=true;
+      $('memoryGameFeedback').textContent='Quase! Essas duas não formam um par.';
+      updateMemoryStatus();
+      window.setTimeout(()=>{
+        first.button.classList.remove('flipped');button.classList.remove('flipped');
+        first.button.setAttribute('aria-label','Carta fechada');button.setAttribute('aria-label','Carta fechada');
+        memoryLock=false;
+      },850);
+    }
+  }
+  $('restartMemoryGame').addEventListener('click',buildMemoryGame);
+  buildMemoryGame();
+}
+
+// Mensagens curtas reveladas aleatoriamente.
+const surpriseMessages=[
+  'Você fez parte de momentos que eu vou guardar com carinho.',
+  'Nem toda lembrança precisa de uma foto para continuar viva.',
+  'Que a vida te trate com a delicadeza que você merece.',
+  'Obrigada por cada risada que um dia foi nossa.',
+  'Mesmo quando os caminhos mudam, algumas histórias continuam importantes.',
+  'Que nunca faltem motivos para você sorrir.',
+  'Tem momentos simples que acabam virando inesquecíveis.',
+  'Eu espero que você sempre encontre paz nas pequenas coisas.'
+];
+const surpriseButton=$('newSurpriseMessage');
+if(surpriseButton){
+  let previousMessage=-1;
+  surpriseButton.addEventListener('click',()=>{
+    let next=Math.floor(Math.random()*surpriseMessages.length);
+    if(surpriseMessages.length>1)while(next===previousMessage)next=Math.floor(Math.random()*surpriseMessages.length);
+    previousMessage=next;
+    const output=$('surpriseMessageText');
+    output.classList.remove('reveal');void output.offsetWidth;
+    output.textContent=surpriseMessages[next];output.classList.add('reveal');
+  });
+}
+
+// Envelope secreto: abre e revela a carta.
+const secretEnvelope=$('secretEnvelope');
+if(secretEnvelope){
+  secretEnvelope.addEventListener('click',()=>{
+    const isOpen=secretEnvelope.classList.toggle('open');
+    secretEnvelope.setAttribute('aria-expanded',String(isOpen));
+    $('secretLetter').hidden=!isOpen;
+    secretEnvelope.querySelector('.envelope-hint').textContent=isOpen?'cartinha aberta ♡':'toque para abrir';
+  });
+}
