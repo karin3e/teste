@@ -21,9 +21,9 @@
 
 /* EXPERIÊNCIA CINEMATOGRÁFICA DE LEMBRANÇAS */
 :root{--memory-ink:#f7eee7;--memory-muted:#cbbab0;--memory-plum:#c9a7d8;--memory-amber:#d69b73}
-.memory-experience{position:relative;isolation:isolate;overflow:hidden;min-height:100vh;padding:34px clamp(18px,6vw,90px) 76px;background:transparent!important;color:var(--memory-ink)}
+.memory-experience{position:relative;isolation:isolate;overflow:hidden;min-height:100vh;padding:34px clamp(18px,6vw,90px) 76px;background:#100d10;color:var(--memory-ink)}
 .memory-backdrop{position:absolute;z-index:-3;inset:-45px;background-image:url("foto-01.jpeg");background-position:center;background-size:cover;filter:blur(35px) brightness(.24) saturate(.7);transform:scale(1.15);opacity:.72;transition:background-image .7s ease}
-.memory-experience:before{content:none!important;display:none!important}
+.memory-experience:before{content:"";position:absolute;z-index:-2;inset:0;background:radial-gradient(ellipse at 20% 20%,#79506a55,transparent 45%),linear-gradient(110deg,#09090bef,#171014d9 52%,#09090bf2)}
 .memory-grain{pointer-events:none;position:absolute;z-index:5;inset:0;opacity:.14;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E")}
 .memory-topline{display:flex;justify-content:space-between;align-items:center;max-width:1180px;margin:0 auto;color:#d9c9c4;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase}
 .memory-mark{font-family:'Playfair Display',serif;font-size:1.05rem;letter-spacing:.08em}.memory-mark i{color:#d49bc6;font-style:normal}
@@ -169,8 +169,68 @@
   background: linear-gradient(120deg, #100d12ee, #171019e8 55%, #0d0c12f2) !important;
 }
 
+/* AJUSTE SOLICITADO: área de lembranças sem fundo ou camadas decorativas */
+.memory-experience,
+.memory-experience::before,
+.memory-experience::after,
+.memory-experience .memory-grain,
+.memory-experience .memory-backdrop {
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+.memory-experience::before,
+.memory-experience::after,
+.memory-experience .memory-grain,
+.memory-experience .memory-backdrop {
+  display: none !important;
+  content: none !important;
+}
+.memory-stage {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: 0 !important;
+  padding: 0 !important;
+}
+.memory-stage::before,
+.memory-photo-wash {
+  display: none !important;
+  content: none !important;
+  background: none !important;
+}
+.memory-photo-shell,
+.memory-photo-shell img {
+  background: transparent !important;
+}
+.memory-photo-shell img {
+  object-fit: contain !important;
+}
 
-/* Memórias: sem fundo, textura, imagem desfocada ou camada decorativa. */
-.memory-experience,.memory-experience::before,.memory-experience::after{background:none!important;background-color:transparent!important;}
-.memory-backdrop,#memoryBackdrop,.memory-grain,.memory-photo-wash{display:none!important;background:none!important;filter:none!important;}
-.memory-photo-shell{background:transparent!important;}
+
+/* CORRECAO DIRETA: remover a camada escura/desfocada que cobre a foto no iPhone */
+#memoryStageFrame .memory-photo-shell::before,
+#memoryStageFrame .memory-photo-shell::after,
+#memoryStageFrame::after,
+#memoryStageFrame::before,
+#memoryStageFrame .memory-photo-wash {
+  display: none !important; content: none !important; background: none !important;
+  -webkit-backdrop-filter: none !important; backdrop-filter: none !important;
+  filter: none !important; opacity: 0 !important;
+}
+#memoryStageFrame .memory-photo-shell {
+  position: relative !important; overflow: hidden !important;
+  border-radius: 0 !important; background: transparent !important;
+  isolation: auto !important;
+}
+#memoryStageFrame #slidePhoto {
+  position: relative !important; inset: auto !important; z-index: 1 !important;
+  display: block !important; width: 100% !important; height: 100% !important;
+  object-fit: contain !important; background: transparent !important;
+  border: 0 !important; border-radius: 0 !important;
+  filter: none !important; -webkit-filter: none !important;
+  opacity: 1 !important; visibility: visible !important;
+  transform: none !important; box-shadow: none !important;
+}
+#memoryStageFrame .photo-counter,
+#memoryStageFrame .photo-date-mark { z-index: 2 !important; }
