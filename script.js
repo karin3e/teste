@@ -12,32 +12,8 @@ nav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
 
 const photos = [
   ...Array.from({length:10},(_,i)=>`foto-${String(i+1).padStart(2,"0")}.jpeg`),
-  ...Array.from({length:7},(_,i)=>`lembranca-${String(i+1).padStart(2,"0")}.jpg`)
-];
-const memoryLines = [
-"um daqueles momentos que eu queria guardar pra sempre.",
-"às vezes, uma foto consegue trazer um abraço de volta.",
-"que sorte a minha ter vivido isso com você.",
-"um pedacinho da nossa história, do jeitinho que foi.",
-"eu lembro. dos detalhes, dos risos, de tudo.",
-"tem lembrança que chega mansinha e aperta o coração.",
-"foi real, foi nosso, e teve muito significado.",
-"se saudade tivesse imagem, talvez fosse uma dessas.",
-"obrigada por cada instante que virou memória.",
-"algumas partes de mim sempre vão sorrir ao lembrar.",
-"não é sobre voltar no tempo; é sobre agradecer por ter vivido.",
-"mesmo de longe, algumas lembranças continuam perto.",
-"um capítulo bonito que sempre vai fazer parte de mim.",
-"eu guardo com carinho tudo aquilo que foi sincero.",
-"talvez nem tudo tenha ficado como eu sonhei, mas foi especial.",
-"que a vida seja gentil com você, onde quer que esteja.",
-"você continua aqui, em cada lembrança boa."
-];
-const noteLines=[
-"tem coisas que o tempo não apaga.",
-"um álbum de momentos que ainda moram aqui.",
-"o que foi bonito merece ser lembrado com carinho.",
-"17 lembranças. Uma história que existiu de verdade."
+  "lembranca-01.jpeg", "lembranca-02.jpeg", "lembranca-03.jpg",
+  "lembranca-04.jpeg", "lembranca-05.jpeg", "lembranca-06.jpeg", "lembranca-07.jpeg"
 ];
 let photoIndex=0;
 let slideshowTimer=null;
@@ -62,11 +38,7 @@ function setPhoto(index){
     photoImg.style.opacity="1";
     photoImg.style.visibility="visible";
     $("photoCounter").textContent=`${String(photoIndex+1).padStart(2,"0")} / ${photos.length}`;
-    $("memoryCaption").textContent=memoryLines[photoIndex];
-    $("memoryNote").textContent=noteLines[Math.min(3,Math.floor(photoIndex/5))];
     $("memoryProgress").style.width=`${((photoIndex+1)/photos.length)*100}%`;
-    const backdrop=$("memoryBackdrop");
-    if(backdrop){backdrop.style.backgroundImage="none";}
     frame.style.setProperty("--photo-tilt",photoIndex%2?"1.2deg":"-1.2deg");
     requestAnimationFrame(()=>requestAnimationFrame(()=>frame.classList.remove("changing")));
     window.setTimeout(()=>frame.classList.remove("changing"),700);
@@ -75,7 +47,7 @@ function setPhoto(index){
   };
   preload.onerror=()=>{
     if(token!==photoLoadToken)return;
-    $("memoryCaption").textContent="Essa lembrança não carregou. Tente avançar novamente.";
+    $("photoCounter").textContent=`${String(photoIndex+1).padStart(2,"0")} / ${photos.length}`;
     frame.classList.remove("changing");
   };
   preload.src=nextSrc;
@@ -220,8 +192,6 @@ $("giftBox").addEventListener("click", () => {
   $("revealed").hidden = false;
   $("giftBox").setAttribute("aria-expanded", "true");
 });
-
-
 // História em quadrinhos: capítulos narrados a partir do relato da Karine.
 const comicChapters = [
   {
@@ -288,8 +258,8 @@ function renderComic(){
   $("comicPageCount").textContent=`${String(comicIndex+1).padStart(2,"0")} / ${String(comicChapters.length).padStart(2,"0")}`;
   const comicPhotoOrder = [
     "foto-01.jpeg","foto-02.jpeg","foto-03.jpeg","foto-04.jpeg","foto-05.jpeg","foto-06.jpeg",
-    "foto-07.jpeg","foto-08.jpeg","foto-09.jpeg","foto-10.jpeg","lembranca-01.jpg","lembranca-02.jpg",
-    "lembranca-03.jpg","lembranca-04.jpg","lembranca-05.jpg","lembranca-06.jpg","lembranca-07.jpg",
+    "foto-07.jpeg","foto-08.jpeg","foto-09.jpeg","foto-10.jpeg","lembranca-01.jpeg","lembranca-02.jpeg",
+    "lembranca-03.jpg","lembranca-04.jpeg","lembranca-05.jpeg","lembranca-06.jpeg","lembranca-07.jpeg",
     "foto-01.jpeg","foto-04.jpeg","foto-07.jpeg","foto-10.jpeg"
   ];
   $("comicPanels").innerHTML=chapter.panels.map((panel,i)=>{
