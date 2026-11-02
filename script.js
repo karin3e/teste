@@ -120,6 +120,7 @@ $("playShow").addEventListener("click",()=>{
 photoImg.loading="eager";
 photoImg.decoding="async";
 setPhoto(0);
+
 let score = 0;
 let gameActive = false;
 let gameInterval = null;
@@ -361,7 +362,7 @@ if(surpriseButton){
   });
 }
 
-// Envelope secreto: abre e revela a carta.
+// Envelope secreto: abre e revela uma carta curta.
 const secretEnvelope=$('secretEnvelope');
 if(secretEnvelope){
   secretEnvelope.addEventListener('click',()=>{
@@ -369,5 +370,42 @@ if(secretEnvelope){
     secretEnvelope.setAttribute('aria-expanded',String(isOpen));
     $('secretLetter').hidden=!isOpen;
     secretEnvelope.querySelector('.envelope-hint').textContent=isOpen?'cartinha aberta ♡':'toque para abrir';
+  });
+}
+
+
+// NOSSO CÉU: cada estrela revela uma lembrança contada pela Karine.
+const skyMemories = [
+  {title:"Aquele primeiro beijo",text:"Amor lembra de quando a gnt se beijou a primeira vez q a gnt tava com tanta vergonha q lunna meio q salvou a gnt daquele momento? Ai c voltou e eu tava dormindo"},
+  {title:"Os dentes KKKKK",text:"De quando a gnt se beijava todas as vezes e eu batia o dente no seu KKKKKKKK"},
+  {title:"Minha namorada!",text:"Lembra da gente em dormentes falando pra aquele cara q tava dando em cima d ti q vc era minha namorada? (Queria matar ele)"},
+  {title:"Os vidros embaçados",text:"E quando a gnt foi pro carro d jp em dormentes so pra se pegar q os vidros ficaram todos embaçados KKKKK"},
+  {title:"A fuga do aniversário",text:"De quando tua mae avisou do nd q tava voltando do aniversário de gislane e eu tive q sair correndo"},
+  {title:"Segredo no chão da sala",text:"Da gente se beijando no chao da sala escondido pra ninguém vê"},
+  {title:"As férias do meio do ano",text:"A semana das ferias do meio do ano q meio q eu ti via TODOS OS DIAS KKKKKKK"},
+  {title:"O dia do governador",text:"O dia q o governador ia pra escola e eu fiquei ai e gabriel tava so me ligando pra ir pra escola KKKKKKKKK"},
+  {title:"O pedido de namoro",text:"Dia q eu pedi vc em namoro morta de vergonha so sabendo rir"},
+  {title:"O presente de Dia dos Namorados",text:"Quando entreguei o presente de dia dos namorados q eu nao sabia nem amarrar a sacola"},
+  {title:"O último encontro",text:"O mais especial foi o ultimo encontro da gente de dar beijinho em forma de cruz em vc"}
+];
+const skyPanel = $("skyMemoryPanel");
+if (skyPanel) {
+  const skyTitle = $("skyMemoryTitle"), skyText = $("skyMemoryText"), skyNumber = $("skyMemoryNumber");
+  document.querySelectorAll("[data-sky-memory]").forEach((star) => {
+    star.addEventListener("click", () => {
+      const index = Number(star.dataset.skyMemory), memory = skyMemories[index];
+      if (!memory) return;
+      skyNumber.textContent = index === 10 ? "✧ ESTRELA ESPECIAL ✧" : `LEMBRANÇA ${String(index + 1).padStart(2, "0")}`;
+      skyTitle.textContent = memory.title;
+      skyText.textContent = memory.text;
+      skyPanel.hidden = false;
+      document.querySelectorAll(".sky-star").forEach(item => item.classList.remove("selected"));
+      star.classList.add("selected");
+      skyPanel.scrollIntoView({behavior:"smooth",block:"nearest"});
+    });
+  });
+  $("closeSkyMemory").addEventListener("click", () => {
+    skyPanel.hidden = true;
+    document.querySelectorAll(".sky-star").forEach(item => item.classList.remove("selected"));
   });
 }
