@@ -409,3 +409,48 @@ if (skyPanel) {
     document.querySelectorAll(".sky-star").forEach(item => item.classList.remove("selected"));
   });
 }
+
+
+// PEDIDO DE DESCULPAS: abrir a carta e enviar um abraço simbólico.
+const apologyEnvelope = $("apologyEnvelope");
+if (apologyEnvelope) {
+  const apologyLetter = $("apologyLetter");
+  const apologyHint = $("apologyTapHint");
+  apologyEnvelope.addEventListener("click", () => {
+    const isOpen = apologyEnvelope.classList.toggle("open");
+    apologyEnvelope.setAttribute("aria-expanded", String(isOpen));
+    apologyLetter.hidden = !isOpen;
+    apologyHint.textContent = isOpen ? "cartinha aberta, leia com carinho ♡" : "toque no envelope para abrir";
+    if (isOpen) apologyLetter.scrollIntoView({behavior:"smooth", block:"nearest"});
+  });
+}
+const apologyHug = $("apologyHug");
+if (apologyHug) {
+  apologyHug.addEventListener("click", () => {
+    $("apologyResponse").textContent = "Recebe um abraço bem apertado, um monte de carinho e todo o tempo que você precisar. ♡";
+    const heartLayer = $("apologyHearts");
+    heartLayer.replaceChildren();
+    ["♡","♥","✿","♡","♥","✧","♡","✿"].forEach((symbol, index) => {
+      const heart = document.createElement("span");
+      heart.textContent = symbol;
+      heart.style.setProperty("--left", `${8 + index * 12}%`);
+      heart.style.setProperty("--size", `${18 + (index % 3) * 8}px`);
+      heart.style.setProperty("--drift", `${(index % 2 ? 1 : -1) * (12 + index * 2)}px`);
+      heart.style.animationDelay = `${index * 90}ms`;
+      heartLayer.appendChild(heart);
+    });
+  });
+}
+
+// ÚLTIMO CAPÍTULO: abrir e fechar a carta de despedida.
+const openFinalChapter = $("openFinalChapter");
+if (openFinalChapter) {
+  const finalLetter = $("finalChapterLetter");
+  openFinalChapter.addEventListener("click", () => {
+    const expanded = openFinalChapter.getAttribute("aria-expanded") === "true";
+    openFinalChapter.setAttribute("aria-expanded", String(!expanded));
+    finalLetter.hidden = expanded;
+    openFinalChapter.querySelector(".final-open-label").textContent = expanded ? "Uma última carta" : "Fechar a carta";
+    if (!expanded) finalLetter.scrollIntoView({behavior:"smooth", block:"nearest"});
+  });
+}
