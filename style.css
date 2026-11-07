@@ -443,3 +443,78 @@
 .final-chapter-open{display:flex;flex-direction:column;align-items:center;gap:7px;margin:0 auto;padding:22px 34px;border:1px solid #bca8cc66;border-radius:18px;background:linear-gradient(145deg,#30253b,#1b1724);color:#f4eaf8;cursor:pointer;box-shadow:0 15px 40px #0005;transition:transform .25s,border-color .25s}.final-chapter-open:hover{transform:translateY(-3px);border-color:#dfc8ed}.final-envelope-icon{font-size:36px;color:#dfc5e9}.final-chapter-open small{color:#b9a9c6;letter-spacing:.12em;text-transform:uppercase;font-size:.62rem}
 .final-chapter-letter{max-width:700px;margin:30px auto 0;padding:clamp(22px,5vw,42px);border:1px solid #cbb6dc55;border-radius:16px;background:linear-gradient(150deg,#f7f0f4,#e9dfeb);color:#514657;text-align:left;box-shadow:0 20px 65px #0006;animation:messageReveal .6s ease}.final-chapter-letter[hidden]{display:none}.final-letter-heading{text-align:center;margin-bottom:25px;color:#8d7296;font:italic 1.6rem 'Playfair Display',Georgia,serif}.final-chapter-letter p{margin:0 0 17px;font:1rem/1.9 'Playfair Display',Georgia,serif}.final-chapter-letter .final-letter-signature{margin-top:27px;text-align:right;color:#765b7e;font-size:1.25rem;font-style:italic}.final-chapter-last-line{max-width:620px;margin:45px auto 0;color:#c9b8d5;font:italic clamp(1.1rem,2.8vw,1.5rem)/1.8 'Playfair Display',Georgia,serif}
 @media(max-width:600px){.apology-section{padding:72px 5vw 80px}.apology-letter{padding:24px 20px}.apology-letter p{font-size:.96rem}.final-chapter-section{padding:78px 5vw 82px}.final-chapter-letter p{font-size:.96rem}}
+
+
+/* OTIMIZACAO PARA SAFARI/iOS — preserva o céu, reduz composição pesada */
+@media (max-width: 820px) {
+  .our-sky-section {
+    isolation: auto;
+    background: linear-gradient(160deg, #21163f 0%, #111027 55%, #090817 100%);
+    -webkit-transform: translateZ(0);
+    transform: none;
+  }
+  .our-sky-section::before {
+    opacity: .28;
+    background-size: 320px 280px;
+  }
+  .our-sky-section::after {
+    display: none;
+  }
+  .sky-nebula {
+    display: none !important;
+    filter: none !important;
+    mix-blend-mode: normal !important;
+  }
+  .sky-universe {
+    box-shadow: 0 12px 28px #03020d80, inset 0 0 24px #8b69d01a;
+    background: radial-gradient(ellipse at 50% 45%, #30234e 0%, #17132d 58%, #0d0b20 100%);
+    contain: layout paint;
+  }
+  .sky-moon {
+    box-shadow: 0 0 12px #e8dcff66;
+  }
+  .sky-star,
+  .sky-star-special {
+    filter: none !important;
+  }
+  .sky-star span,
+  .sky-star-special span {
+    text-shadow: 0 0 5px #fff, 0 0 10px #c6a4ff;
+  }
+  .sky-star-special span {
+    animation: none !important;
+  }
+  .sky-memory-panel {
+    box-shadow: 0 8px 22px #0006;
+    animation: none;
+  }
+}
+@media (max-width: 820px) and (prefers-reduced-motion: no-preference) {
+  .our-sky-section,
+  .sky-universe,
+  .sky-memory-panel {
+    scroll-behavior: auto;
+  }
+}
+
+
+/* O QUE SINTO — carta cinematográfica interativa */
+.feelings-section{position:relative;isolation:isolate;overflow:hidden;padding:100px 6vw 105px;color:#f5eaf0;background:radial-gradient(ellipse at 50% 35%,#351522 0%,#1b0d16 52%,#09070b 100%)}
+.feelings-inner{max-width:850px;margin:0 auto;text-align:center}
+.feelings-inner>.eyebrow{color:#d69bad;letter-spacing:.2em;text-transform:uppercase;font-size:.7rem;font-weight:700}
+.feelings-inner h2{margin:14px 0 18px;font:500 clamp(2.5rem,7vw,5rem)/1.08 'Playfair Display',Georgia,serif;color:#fff4f5}
+.feelings-inner h2 em{color:#d99aaa;font-weight:400}
+.feelings-intro{max-width:590px;margin:0 auto 30px;color:#d5c0c8;line-height:1.8}
+.feelings-open-button{display:inline-flex;align-items:center;justify-content:center;gap:18px;min-height:54px;padding:15px 24px;border:1px solid #d99aaa88;border-radius:40px;background:linear-gradient(135deg,#552333,#2a1420);color:#fff1f4;font-family:inherit;font-size:.9rem;font-weight:600;cursor:pointer;box-shadow:0 10px 28px #0005;transition:background .2s,border-color .2s}
+.feelings-open-button:hover{border-color:#f1c3cf;background:linear-gradient(135deg,#693044,#351a29)}
+.feelings-open-arrow{font-size:1.1rem;color:#edb8c5}
+.feelings-letter{max-width:720px;margin:30px auto 0;padding:clamp(24px,5vw,44px);border:1px solid #d99aaa55;border-radius:18px;background:linear-gradient(150deg,#21131a,#130d12);color:#f0e2e7;text-align:left;line-height:1.9;box-shadow:0 16px 40px #0006}
+.feelings-letter[hidden]{display:none}
+.feelings-letter p{margin:0 0 17px;font:1rem/1.9 'Playfair Display',Georgia,serif}
+.feelings-letter .feelings-signature{margin:28px 0 0;text-align:right;color:#e0a6b6;font-size:1.2rem;font-style:italic}
+.feelings-close-button{display:block;margin:26px auto 0;padding:10px 19px;border:1px solid #d99aaa77;border-radius:30px;background:#ffffff0b;color:#f6e8ed;cursor:pointer}
+.feelings-footnote{margin:24px 0 0;color:#bfa6af;font-size:.78rem;letter-spacing:.06em}
+.feelings-letter-reveal{animation:feelingsReveal .65s ease both}
+@keyframes feelingsReveal{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:600px){.feelings-section{padding:76px 5vw 82px}.feelings-letter{padding:23px 19px}.feelings-letter p{font-size:.96rem}.feelings-open-button{max-width:100%;padding:14px 18px}}
+@media(max-width:650px){.feelings-letter-reveal{animation:none}}

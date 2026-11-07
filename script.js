@@ -454,3 +454,28 @@ if (openFinalChapter) {
     if (!expanded) finalLetter.scrollIntoView({behavior:"smooth", block:"nearest"});
   });
 }
+
+
+// CARTA O QUE SINTO: abrir e fechar a mensagem.
+(() => {
+  const openButton = $("feelingsOpenButton");
+  const closeButton = $("feelingsCloseButton");
+  const letter = $("feelingsLetter");
+  if (!openButton || !closeButton || !letter) return;
+  const setLetterOpen = (open) => {
+    letter.hidden = !open;
+    openButton.setAttribute("aria-expanded", String(open));
+    openButton.querySelector(".feelings-open-label").textContent = open ? "Mensagem aberta" : "Ler o que eu precisava te dizer";
+    openButton.querySelector(".feelings-open-arrow").textContent = open ? "↑" : "↓";
+    if (open) {
+      letter.classList.remove("feelings-letter-reveal");
+      void letter.offsetWidth;
+      letter.classList.add("feelings-letter-reveal");
+      letter.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      openButton.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  };
+  openButton.addEventListener("click", () => setLetterOpen(letter.hidden));
+  closeButton.addEventListener("click", () => setLetterOpen(false));
+})();
