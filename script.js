@@ -12,8 +12,8 @@ nav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
 
 const photos = [
   ...Array.from({length:10},(_,i)=>`foto-${String(i+1).padStart(2,"0")}.jpeg`),
-  "lembranca-01.jpeg", "lembranca-02.jpeg", "lembranca-03.jpg",
-  "lembranca-04.jpeg", "lembranca-05.jpeg", "lembranca-06.jpeg", "lembranca-07.jpeg"
+  "lembranca-01.jpg", "lembranca-02.jpg", "lembranca-03.jpg",
+  "lembranca-04.jpg", "lembranca-05.jpg", "lembranca-06.jpg", "lembranca-07.jpg"
 ];
 let photoIndex=0;
 let slideshowTimer=null;
@@ -260,8 +260,8 @@ function renderComic(){
   $("comicPageCount").textContent=`${String(comicIndex+1).padStart(2,"0")} / ${String(comicChapters.length).padStart(2,"0")}`;
   const comicPhotoOrder = [
     "foto-01.jpeg","foto-02.jpeg","foto-03.jpeg","foto-04.jpeg","foto-05.jpeg","foto-06.jpeg",
-    "foto-07.jpeg","foto-08.jpeg","foto-09.jpeg","foto-10.jpeg","lembranca-01.jpeg","lembranca-02.jpeg",
-    "lembranca-03.jpg","lembranca-04.jpeg","lembranca-05.jpeg","lembranca-06.jpeg","lembranca-07.jpeg",
+    "foto-07.jpeg","foto-08.jpeg","foto-09.jpeg","foto-10.jpeg","lembranca-01.jpg","lembranca-02.jpg",
+    "lembranca-03.jpg","lembranca-04.jpg","lembranca-05.jpg","lembranca-06.jpg","lembranca-07.jpg",
     "foto-01.jpeg","foto-04.jpeg","foto-07.jpeg","foto-10.jpeg"
   ];
   $("comicPanels").innerHTML=chapter.panels.map((panel,i)=>{
@@ -303,7 +303,7 @@ if(memoryGameGrid){
       <button class="memory-card" type="button" data-index="${index}" aria-label="Carta fechada">
         <span class="memory-card-inner">
           <span class="memory-card-face memory-card-back" aria-hidden="true">♡</span>
-          <span class="memory-card-face memory-card-front"><img src="${card.src}" alt="Lembrança do casal"></span>
+          <span class="memory-card-face memory-card-front"><img src="${card.src}" alt="Lembrança do casal" loading="lazy" decoding="async"></span>
         </span>
       </button>`).join('');
     memoryGameGrid.querySelectorAll('.memory-card').forEach(button=>button.addEventListener('click',()=>flipMemoryCard(button)));
